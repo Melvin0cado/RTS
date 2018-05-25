@@ -22,9 +22,7 @@ public class Game extends Application {
 		controller.addCarre(new Carre(400, 200 ));
 		controller.addCarre(new Carre(200, 400 ));
 		
-		
 		controller.render(root);
-		
 		
 		root.setOnMousePressed(new InputMouseClick(controller));
 		root.setOnMouseDragged(new InputMouseDrag (controller));
