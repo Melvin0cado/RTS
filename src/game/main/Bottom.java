@@ -8,8 +8,6 @@ import javafx.scene.shape.Rectangle;
 
 public class Bottom {
 
-	
-	private Pane root;
 	private Rectangle rectangle;
 	private HBox hb;
 	private HBox hb2;
@@ -17,9 +15,7 @@ public class Bottom {
 	private Button b1;
 
 	public Bottom(Pane root) {
-		super();
-		this.root = root;
-		
+				
 		rectangle = new Rectangle();
 		rectangle.setFill(Color.gray(0.7));
 		rectangle.setWidth(root.getPrefWidth());
