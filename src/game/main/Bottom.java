@@ -39,8 +39,6 @@ public class Bottom {
 		hb2.setPrefWidth(root.getPrefHeight());
 		hb2.setPrefHeight(root.getPrefHeight()*0.2);
 		
-		
-		
 		root.getChildren().add(hb);
 		root.getChildren().add(hb2);
 		hb.getChildren().add(rectangle);
