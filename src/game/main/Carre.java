@@ -8,7 +8,7 @@ public class Carre extends GameObject {
 	private final static double longueur = 20.0;
 	private boolean move = false;
 	private boolean selected = false;
-	private final static double speed = 1;
+	private final static double speed = 0.1;
 	private double coeffX;
 	private double coeffY;
 	private double destinationX;
@@ -19,7 +19,6 @@ public class Carre extends GameObject {
 		this.getView().setTranslateX(x);
 		this.getView().setTranslateY(y);
 		
-
 	}
 
 	public void uptdate() {
