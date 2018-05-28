@@ -1,16 +1,23 @@
 package game.main;
 
+import java.util.List;
+
 import javax.swing.border.Border;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Game extends Application {
@@ -20,7 +27,7 @@ public class Game extends Application {
 	
 	private Parent createContent() {
 
-		root = new Pane();
+		root = new BorderPane();
 		root.setPrefSize(600, 600);
 		
 		controller.addCarre(new Carre(200,200));
@@ -33,17 +40,7 @@ public class Game extends Application {
 		root.setOnMouseDragged(new InputMouseDrag (controller));
 		root.setOnMouseReleased(new InputMouseReleased(controller));
 		
-		HBox hb = new HBox();
-	
-		BorderPane bp = new BorderPane();
-		bp.setBottom(hb);
-		bp.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE*0.2);
-		Button b1 = new Button("Test");
-		
-		bp.getChildren().add(b1);
-		
-		root.getChildren().add(hb);
-		
+		Bottom bot = new Bottom(root);
 		
 		AnimationTimer timer = new AnimationTimer() { // boucle de jeu.
 
