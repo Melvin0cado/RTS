@@ -1,5 +1,8 @@
 package game.main;
 
+import javax.sound.sampled.SourceDataLine;
+import javax.sql.rowset.serial.SerialDatalink;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -7,6 +10,7 @@ import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.skin.VirtualFlow;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -30,6 +34,8 @@ public class Game extends Application {
 		controller.addCarre(new Carre(200,300));
 		
 		controller.render(root);
+		
+		
 		
 		root.setCursor(cursor);
 		
