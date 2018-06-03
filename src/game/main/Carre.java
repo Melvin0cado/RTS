@@ -5,33 +5,38 @@ import javafx.scene.shape.Rectangle;
 
 public class Carre extends GameObject {
 
+	private Controller controller;
 	private final static double longueur = 20.0;
 	private boolean move = false;
 	private boolean selected = false;
-	private final static double speed = 1;
+	private double speed = 1;
 	private double coeffX;
 	private double coeffY;
 	private double destinationX;
 	private double destinationY;
 	
-	public Carre(double x, double y) {
+	public Carre(double x, double y, Controller controller) {
 		super(new Rectangle(longueur, longueur, Color.BLUE));
 		this.getView().setTranslateX(x);
 		this.getView().setTranslateY(y);
+		this.controller = controller;
 		
 	}
 
 	public void uptdate() {
-
+		
+		System.out.println(Physics.CollisionCarreVSCarre(this, controller.getListCarre()));
+			
+			
+		
 		//System.out.println(this.isMove()+","+this.isSelected());
 		//System.out.println(this.getView().getTranslateY()+", "+(destinationY+1));
 		if ( (int)this.getX() >=  (int)destinationX-1 && (int)this.getX() <= (int)destinationX+1
 				&&  (int)this.getY() >=  (int)destinationY-1 && (int)this.getY()<= (int)destinationY+1) {
 			this.setMove(false);
 		} else {
-
-			
-
+				
+				
 				if (this.isMove()) {
 
 //					System.out.println(coeffX+" , "+coeffY);
@@ -50,7 +55,8 @@ public class Carre extends GameObject {
 						this.getView().setTranslateY(this.getView().getTranslateY() - speed * coeffY);
 					}
 				
-				}
+				
+			}
 		}
 	}
 	
@@ -65,6 +71,10 @@ public class Carre extends GameObject {
 
 	public double getSpeed() {
 		return speed;
+	}
+
+	public void setSpeed(double speed) {
+		this.speed = speed;
 	}
 
 	public double getDestinationX() {

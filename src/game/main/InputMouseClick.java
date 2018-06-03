@@ -45,7 +45,7 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 				rect.setY(-10);
 				
 				if (carre.isSelected()) {
-					
+									
 					carre.setMove(true);
 					carre.setDestinationX(coorX);
 					carre.setDestinationY(coorY);
@@ -107,7 +107,6 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 				rect.setX(e.getX());
 				rect.setY(e.getY());
 			
-				
 				if(!(e.getX() < carre.getX() + carre.getView().getBoundsInLocal().getWidth()
 					&& e.getX() > carre.getX()
 					&& e.getY() < carre.getY() + carre.getView().getBoundsInLocal().getHeight()

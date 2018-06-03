@@ -9,7 +9,7 @@ public class Controller {
 
 	private LinkedList<Carre> ListCarre = new LinkedList<Carre>();
 	private LinkedList<Carre> ListCarreSelected = new LinkedList<Carre>();
-	
+	private LinkedList<Carre> ListObserver = new LinkedList<Carre>();
 	private Pane root;
 	private RectSelect rect = new RectSelect(0, 0, 0, 0, root,this);
 	
@@ -31,6 +31,7 @@ public class Controller {
 		for(Carre carre : ListCarre) {
 			carre.uptdate();
 		}
+		
 		
 	}
 	
@@ -57,6 +58,14 @@ public class Controller {
 
 	public void setListCarreSelected(LinkedList<Carre> listCarreSelected) {
 		ListCarreSelected = listCarreSelected;
+	}
+
+	public LinkedList<Carre> getListObserver() {
+		return ListObserver;
+	}
+
+	public void setListObserver(LinkedList<Carre> listObserver) {
+		ListObserver = listObserver;
 	}
 
 
