@@ -2,7 +2,8 @@ package game.main;
 
 import java.util.LinkedList;
 
-import javafx.scene.shape.Rectangle;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 
 public class Physics {
 
@@ -29,27 +30,56 @@ public class Physics {
 	public static boolean CollisionCarreVSCarre(Carre carre, LinkedList<Carre> carres) {
 		boolean res =false;
 		
+		
 		Carre carre2;
 		
 		for(int i=0;i<carres.size();i++) {
 			
 			carre2= carres.get(i);
 			
-			if(carre != carre2) {
+			if(carre != carre2 && carre.isDestFini()) {
 				if(carre.getView().getBoundsInParent().intersects(carre2.getView().getBoundsInParent())){
-				res = true;
-				
-					if(carre.getDestinationX()-carre.getX() < carre2.getDestinationX()-carre.getX() &&
-							carre.getDestinationY()-carre.getY()< carre2.getDestinationY()-carre.getY()) {
+					carre.setMove(false);
+					carre2.setMove(false);
+					if(carre.getX() > carre2.getX() && carre.getY() > carre2.getY()) {
 						
-						carre2.setDestinationX(carre.getView().getTranslateX()+carre.getView().getBoundsInParent().getWidth()+1);
-						carre2.setDestinationY(carre.getView().getTranslateY()+carre.getView().getBoundsInParent().getHeight()+1);
+					System.out.println("par le bas");
+					
+						carre2.setDestinationX(carre2.getX());
+						carre2.setDestinationY(carre2.getY()-10);
+						
+						carre.setDestinationX(carre.getX());
+						carre.setDestinationY(carre.getY());
+						
+						
 					}
+					else if(carre.getX() < carre2.getX() && carre.getY() < carre2.getY()) {
+					
+						System.out.println("par le haut");
+						carre2.setDestinationX(carre2.getX());
+						carre2.setDestinationY(carre2.getY());
+						
+						carre.setDestinationX(carre.getX());
+						carre.setDestinationY(carre.getY()-10);
+					}
+					else if(carre.getX() > carre2.getX() && carre.getY() < carre2.getY()) {
+						
+						
+						
+					}
+					else if(carre.getX()<carre2.getX() && carre.getY()>carre2.getY()) {
+						
+						
+					}
+					
+					carre.setMove(true);
+					carre2.setMove(true);
+					res = true;
+				
+					
 				}
 			}
-			
 		}
-			
 		return res;
 	}
 }

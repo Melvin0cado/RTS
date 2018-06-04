@@ -22,7 +22,7 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 
 	public void handle(MouseEvent e) {
 		
-		
+		System.out.println(e.getX()+", "+e.getY());
 		
 		for(int i =0;i<controller.getListCarre().size();i++) {
 			

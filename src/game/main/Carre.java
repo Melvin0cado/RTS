@@ -14,6 +14,7 @@ public class Carre extends GameObject {
 	private double coeffY;
 	private double destinationX;
 	private double destinationY;
+	private boolean destFini ;
 	
 	public Carre(double x, double y, Controller controller) {
 		super(new Rectangle(longueur, longueur, Color.BLUE));
@@ -25,20 +26,20 @@ public class Carre extends GameObject {
 
 	public void uptdate() {
 		
-		System.out.println(Physics.CollisionCarreVSCarre(this, controller.getListCarre()));
-			
-			
+		Physics.CollisionCarreVSCarre(this, controller.getListCarre());
 		
 		//System.out.println(this.isMove()+","+this.isSelected());
 		//System.out.println(this.getView().getTranslateY()+", "+(destinationY+1));
 		if ( (int)this.getX() >=  (int)destinationX-1 && (int)this.getX() <= (int)destinationX+1
 				&&  (int)this.getY() >=  (int)destinationY-1 && (int)this.getY()<= (int)destinationY+1) {
 			this.setMove(false);
+			setDestFini(true);
 		} else {
 				
 				
 				if (this.isMove()) {
 
+					setDestFini(false);
 //					System.out.println(coeffX+" , "+coeffY);
 //					System.out.print((int) (destinationX - this.getView().getTranslateX()) + " | ");
 //					System.out.println((int) (destinationY - this.getView().getTranslateY()));
@@ -119,6 +120,14 @@ public class Carre extends GameObject {
 	
 	public double getLongueur() {
 		return longueur;
+	}
+
+	public boolean isDestFini() {
+		return destFini;
+	}
+
+	public void setDestFini(boolean destFini) {
+		this.destFini = destFini;
 	}
 
 
