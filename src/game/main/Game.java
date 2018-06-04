@@ -2,28 +2,36 @@ package game.main;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Game extends Application {
-
+	private ImageCursor cursor= new ImageCursor(new Image("./cursor.png"));
+	
 	private Pane root;
-	Controller controller = new Controller(root);
+	private Controller controller = new Controller(root);
 	
 	private Parent createContent() {
 
+		
 		root = new BorderPane();
 		root.setPrefSize(600, 600);
 		
-		controller.addCarre(new Carre(200,200));
-		controller.addCarre(new Carre(400,200));
-		controller.addCarre(new Carre(200,300));
+		controller.addCarre(new Carre(200,200, controller));
+		controller.addCarre(new Carre(400,200, controller));
+		controller.addCarre(new Carre(200,300, controller));
 		
 		controller.render(root);
+		
+		
+		
+		root.setCursor(cursor);
 		
 		root.setOnMousePressed(new InputMouseClick(controller));
 		root.setOnMouseDragged(new InputMouseDrag (controller));
@@ -57,13 +65,9 @@ public class Game extends Application {
 		
 		stage.setScene(scene);
 		stage.setAlwaysOnTop(true);
+		
 		stage.show();
 
-	}
-	
-	public void handle(MouseEvent event) {
-		
-		
 	}
 
 	public static void main(String[] args) {

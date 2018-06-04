@@ -2,15 +2,23 @@ package game.main;
 
 
 import javafx.event.EventHandler;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+
 
 public class InputMouseDrag implements EventHandler<MouseEvent>{
 
+
+	
+	
 	private RectSelect rect;
 	
 	
 	public InputMouseDrag(Controller controller) {
-
+		
+	
 		this.rect = controller.getRect();
 		
 	}
@@ -18,6 +26,7 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 	@Override
 	public void handle(MouseEvent e) {
 
+		
 		if(e.isPrimaryButtonDown()) {
 			
 			if(e.getX() > rect.getClickX() && e.getY() > rect.getClickY()) {

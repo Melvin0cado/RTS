@@ -5,35 +5,41 @@ import javafx.scene.shape.Rectangle;
 
 public class Carre extends GameObject {
 
+	private Controller controller;
 	private final static double longueur = 20.0;
 	private boolean move = false;
 	private boolean selected = false;
-	private final static double speed = 0.1;
+	private double speed = 0.2;
 	private double coeffX;
 	private double coeffY;
 	private double destinationX;
 	private double destinationY;
+	private boolean destFini ;
 	
-	public Carre(double x, double y) {
+	public Carre(double x, double y, Controller controller) {
 		super(new Rectangle(longueur, longueur, Color.BLUE));
 		this.getView().setTranslateX(x);
 		this.getView().setTranslateY(y);
+		this.controller = controller;
 		
 	}
 
 	public void uptdate() {
-
+		
+		Physics.CollisionCarreVSCarre(this, controller.getListCarre());
+		
 		//System.out.println(this.isMove()+","+this.isSelected());
 		//System.out.println(this.getView().getTranslateY()+", "+(destinationY+1));
 		if ( (int)this.getX() >=  (int)destinationX-1 && (int)this.getX() <= (int)destinationX+1
 				&&  (int)this.getY() >=  (int)destinationY-1 && (int)this.getY()<= (int)destinationY+1) {
 			this.setMove(false);
+			setDestFini(true);
 		} else {
-
-			
-
+				
+				
 				if (this.isMove()) {
 
+					setDestFini(false);
 //					System.out.println(coeffX+" , "+coeffY);
 //					System.out.print((int) (destinationX - this.getView().getTranslateX()) + " | ");
 //					System.out.println((int) (destinationY - this.getView().getTranslateY()));
@@ -50,7 +56,8 @@ public class Carre extends GameObject {
 						this.getView().setTranslateY(this.getView().getTranslateY() - speed * coeffY);
 					}
 				
-				}
+				
+			}
 		}
 	}
 	
@@ -65,6 +72,10 @@ public class Carre extends GameObject {
 
 	public double getSpeed() {
 		return speed;
+	}
+
+	public void setSpeed(double speed) {
+		this.speed = speed;
 	}
 
 	public double getDestinationX() {
@@ -109,6 +120,14 @@ public class Carre extends GameObject {
 	
 	public double getLongueur() {
 		return longueur;
+	}
+
+	public boolean isDestFini() {
+		return destFini;
+	}
+
+	public void setDestFini(boolean destFini) {
+		this.destFini = destFini;
 	}
 
 
