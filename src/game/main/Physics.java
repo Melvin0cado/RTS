@@ -30,7 +30,6 @@ public class Physics {
 	public static boolean CollisionCarreVSCarre(Carre carre, LinkedList<Carre> carres) {
 		boolean res =false;
 		
-		
 		Carre carre2;
 		
 		for(int i=0;i<carres.size();i++) {
@@ -41,34 +40,38 @@ public class Physics {
 				if(carre.getView().getBoundsInParent().intersects(carre2.getView().getBoundsInParent())){
 					carre.setMove(false);
 					carre2.setMove(false);
-					if(carre.getX() > carre2.getX() && carre.getY() > carre2.getY()) {
-						
-					System.out.println("par le bas");
 					
-						carre2.setDestinationX(carre2.getX());
-						carre2.setDestinationY(carre2.getY()-10);
+					if( carre.getX() < carre2.getX() ) {
 						
-						carre.setDestinationX(carre.getX());
+					System.out.println("par la gauche");
+					
+					
+						carre.setDestinationX(carre.getX()-10);
 						carre.setDestinationY(carre.getY());
+							
+					}if(carre.getY() < carre2.getY() ) {
 						
-						
-					}
-					else if(carre.getX() < carre2.getX() && carre.getY() < carre2.getY()) {
-					
 						System.out.println("par le haut");
-						carre2.setDestinationX(carre2.getX());
-						carre2.setDestinationY(carre2.getY());
 						
 						carre.setDestinationX(carre.getX());
 						carre.setDestinationY(carre.getY()-10);
-					}
-					else if(carre.getX() > carre2.getX() && carre.getY() < carre2.getY()) {
-						
-						
 						
 					}
-					else if(carre.getX()<carre2.getX() && carre.getY()>carre2.getY()) {
+					if(carre.getX() > carre2.getX() ) {
+					
+						System.out.println("par le droite");
 						
+						carre.setDestinationX(carre.getX()+10);
+						carre.setDestinationY(carre.getY());
+						
+					}
+					
+					if(carre.getY() > carre2.getY() ) {
+						
+						System.out.println("par le bas");
+						
+						carre.setDestinationX(carre.getX());
+						carre.setDestinationY(carre.getY()+10);
 						
 					}
 					

@@ -16,11 +16,13 @@ public class Carre extends GameObject {
 	private double destinationY;
 	private boolean destFini ;
 	
+	
 	public Carre(double x, double y, Controller controller) {
 		super(new Rectangle(longueur, longueur, Color.BLUE));
 		this.getView().setTranslateX(x);
 		this.getView().setTranslateY(y);
 		this.controller = controller;
+		this.destFini = true;
 		
 	}
 
@@ -130,5 +132,14 @@ public class Carre extends GameObject {
 		this.destFini = destFini;
 	}
 
+	public double getWidth() {
+		
+		return this.getView().getBoundsInParent().getWidth();
+	}
+	
+	public double getHeight() {
+		
+		return this.getView().getBoundsInParent().getHeight();
+	}
 
 }
