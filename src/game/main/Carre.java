@@ -9,7 +9,7 @@ public class Carre extends GameObject {
 	private final static double longueur = 20.0;
 	private boolean move = false;
 	private boolean selected = false;
-	private double speed = 1;
+	private double speed = 0.2;
 	private double coeffX;
 	private double coeffY;
 	private double destinationX;

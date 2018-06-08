@@ -2,9 +2,6 @@ package game.main;
 
 import java.util.LinkedList;
 
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
-
 public class Physics {
 
 	
