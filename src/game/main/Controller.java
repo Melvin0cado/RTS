@@ -43,6 +43,14 @@ public class Controller {
 		root.getChildren().add(rect);
 		
 	}
+	
+	public Pane getRoot() {
+		return root;
+	}
+
+	public void setRoot(Pane root) {
+		this.root = root;
+	}
 
 	public RectSelect getRect() {
 		return rect;

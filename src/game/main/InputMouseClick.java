@@ -2,6 +2,8 @@ package game.main;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 public class InputMouseClick implements EventHandler<MouseEvent> {
 
@@ -34,7 +36,6 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 			carre = controller.getListCarre().get(i);
 			coorX = e.getX() - (carre.getView().getBoundsInLocal().getWidth() /2);
 			coorY = e.getY() - (carre.getView().getBoundsInLocal().getHeight()/2);// on donne la destination du centre du carre
-			
 			
 			
 			if(e.isSecondaryButtonDown()) {
