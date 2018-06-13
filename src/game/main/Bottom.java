@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Bottom {
+public class Bottom extends Pane{
 
 	private Rectangle rectangle;
 	private HBox hb;
@@ -15,7 +15,7 @@ public class Bottom {
 	private Button b1;
 
 	public Bottom(Pane root) {
-				
+		super();
 		rectangle = new Rectangle();
 		rectangle.setFill(Color.gray(0.7));
 		rectangle.setWidth(root.getPrefWidth());
@@ -27,11 +27,11 @@ public class Bottom {
 		b1.setMaxSize(100, 30);
 		b1.setMinSize(100, 30);
 		
-		hb = new HBox();
-		hb.setTranslateX(0);
-		hb.setTranslateY(root.getPrefHeight()*0.8);
-		hb.setPrefWidth(root.getPrefHeight());
-		hb.setPrefHeight(root.getPrefHeight()*0.2);
+		
+		super.setTranslateX(0);
+		super.setTranslateY(root.getPrefHeight()*0.8);
+		super.setPrefWidth(root.getPrefHeight());
+		super.setPrefHeight(root.getPrefHeight()*0.2);
 		
 		hb2 = new HBox();
 		hb2.setTranslateX(0);
@@ -39,9 +39,9 @@ public class Bottom {
 		hb2.setPrefWidth(root.getPrefHeight());
 		hb2.setPrefHeight(root.getPrefHeight()*0.2);
 		
-		root.getChildren().add(hb);
+		root.getChildren().add(this);
 		root.getChildren().add(hb2);
-		hb.getChildren().add(rectangle);
+		super.getChildren().add(rectangle);
 		hb2.getChildren().add(b1);
 		
 	}

@@ -35,7 +35,9 @@ public class Game extends Application {
 		controller.addCarre(new Carre(200,200, controller));
 		controller.addCarre(new Carre(400,200, controller));
 		controller.addCarre(new Carre(200,300, controller));
-		
+		controller.addCarre(new Carre(230,230, controller));
+		controller.addCarre(new Carre(430,230, controller));
+		controller.addCarre(new Carre(270,370, controller));
 		controller.render(root);
 		
 		root.setCursor(cursor);
@@ -63,11 +65,7 @@ public class Game extends Application {
 	private void onUpdate() {
 
 		controller.uptdate();
-		if(root.getTranslateY() != 1000) {
-			
-			root.setTranslateY(root.getTranslateY()-1);
-			root.setTranslateX(root.getTranslateX()-1);
-		}
+		
 	}
 
 	@Override

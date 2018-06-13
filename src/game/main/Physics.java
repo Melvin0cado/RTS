@@ -43,7 +43,7 @@ public class Physics {
 					System.out.println("par la gauche");
 					
 					
-						carre.setDestinationX(carre.getX()-10);
+						carre.setDestinationX(carre.getX()-carre.getLongueur()/2);
 						carre.setDestinationY(carre.getY());
 							
 					}if(carre.getY() < carre2.getY() ) {
@@ -51,14 +51,14 @@ public class Physics {
 						System.out.println("par le haut");
 						
 						carre.setDestinationX(carre.getX());
-						carre.setDestinationY(carre.getY()-10);
+						carre.setDestinationY(carre.getY()-carre.getLongueur()/2);
 						
 					}
 					if(carre.getX() > carre2.getX() ) {
 					
 						System.out.println("par le droite");
 						
-						carre.setDestinationX(carre.getX()+10);
+						carre.setDestinationX(carre.getX()+carre.getLongueur()/2);
 						carre.setDestinationY(carre.getY());
 						
 					}
@@ -68,7 +68,7 @@ public class Physics {
 						System.out.println("par le bas");
 						
 						carre.setDestinationX(carre.getX());
-						carre.setDestinationY(carre.getY()+10);
+						carre.setDestinationY(carre.getY()+carre.getLongueur()/2);
 						
 					}
 					
