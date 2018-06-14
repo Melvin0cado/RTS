@@ -37,7 +37,6 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 			coorX = e.getX() - (carre.getView().getBoundsInLocal().getWidth() /2);
 			coorY = e.getY() - (carre.getView().getBoundsInLocal().getHeight()/2);// on donne la destination du centre du carre
 			
-			
 			if(e.isSecondaryButtonDown()) {
 				
 				rect.setWidth(0);

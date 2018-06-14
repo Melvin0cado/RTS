@@ -20,7 +20,6 @@ public class Game extends Application {
 	Rectangle rectBis;
 	private Parent createContent() {
 
-		
 		root = new BorderPane();
 		root.setPrefSize(600, 600);
 		

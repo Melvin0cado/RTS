@@ -17,7 +17,6 @@ public class Carre extends GameObject {
 	private double destinationY;
 	private boolean destFini ;
 	
-	
 	public Carre(double x, double y, Controller controller) {
 		super(new Rectangle(longueur, longueur, Color.BLUE));
 		this.getView().setTranslateX(x);

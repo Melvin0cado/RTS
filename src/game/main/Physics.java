@@ -9,7 +9,7 @@ public class Physics {
 		carre.setSpeed(carre.getTRUESPEED()/(carre.getCoeffX()+carre.getCoeffY()));
 			
 	}
-	
+
 	public static void calculCoeff(Carre carre, double x , double y) {
 		
 		if ((x > carre.getX() && y > carre.getY())) { //coin en bas a droite
