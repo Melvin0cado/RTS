@@ -4,6 +4,65 @@ import java.util.LinkedList;
 
 public class Physics {
 
+	public static void calculVitesse(Carre carre) {
+		
+		carre.setSpeed(carre.getTRUESPEED()/(carre.getCoeffX()+carre.getCoeffY()));
+			
+	}
+	
+	public static void calculCoeff(Carre carre, double x , double y) {
+		
+		if ((x > carre.getX() && y > carre.getY())) { //coin en bas a droite
+			if (x - carre.getX() < y - carre.getY()) {
+				carre.setCoeffX(
+						(x - carre.getX()) / (y - carre.getY()));
+				carre.setCoeffY(1);
+			} else {
+				carre.setCoeffY(
+						(y - carre.getY()) / (x - carre.getX()));
+				carre.setCoeffX(1);
+			}
+		}
+		if (x < carre.getX() && y < carre.getY()) {
+			if (x - carre.getX() < y - carre.getY()) {
+				carre.setCoeffY(
+						(y - carre.getY()) / (x - carre.getX()));
+				carre.setCoeffX(1);
+			} else {
+				carre.setCoeffX(
+						(x - carre.getX()) / (y - carre.getY()));
+				carre.setCoeffY(1);
+			}
+		}
+		if (x > carre.getX() && y < carre.getY()) {
+			if (x - carre.getX() < carre.getY() - y) {
+				carre.setCoeffX(
+						(carre.getX() - x) / (y - carre.getY()));
+				carre.setCoeffY(1);
+			} else {
+				carre.setCoeffY(
+						(y - carre.getY()) / (carre.getX() - x));
+				carre.setCoeffX(1);
+			}
+
+		}
+		if (x < carre.getX() && y > carre.getView().getTranslateY()) {
+			if (carre.getX() - x < y - carre.getView().getTranslateY()) {
+				carre.setCoeffX(
+						(x - carre.getX()) / (carre.getView().getTranslateY() - y));
+				carre.setCoeffY(1);
+			} else {
+				carre.setCoeffY(
+						(carre.getView().getTranslateY() - y) / (x - carre.getX()));
+				carre.setCoeffX(1);
+			}
+
+		}
+		
+		
+		Physics.calculVitesse(carre);
+		
+	}
 	
 
 	public static boolean CollisionCarreVSRect(Controller controller) {
@@ -40,23 +99,20 @@ public class Physics {
 					
 					if( carre.getX() < carre2.getX() ) {
 						
-					System.out.println("par la gauche");
-					
-					
+				
 						carre.setDestinationX(carre.getX()-carre.getLongueur()/2);
 						carre.setDestinationY(carre.getY());
+						
 							
 					}if(carre.getY() < carre2.getY() ) {
 						
-						System.out.println("par le haut");
-						
+					
 						carre.setDestinationX(carre.getX());
 						carre.setDestinationY(carre.getY()-carre.getLongueur()/2);
 						
 					}
 					if(carre.getX() > carre2.getX() ) {
 					
-						System.out.println("par le droite");
 						
 						carre.setDestinationX(carre.getX()+carre.getLongueur()/2);
 						carre.setDestinationY(carre.getY());
@@ -65,15 +121,16 @@ public class Physics {
 					
 					if(carre.getY() > carre2.getY() ) {
 						
-						System.out.println("par le bas");
-						
+					
 						carre.setDestinationX(carre.getX());
 						carre.setDestinationY(carre.getY()+carre.getLongueur()/2);
 						
 					}
-					
+					Physics.calculCoeff(carre, carre.getDestinationX(), carre.getDestinationY());
+					Physics.calculCoeff(carre2, carre2.getDestinationX(), carre2.getDestinationY());
 					carre.setMove(true);
 					carre2.setMove(true);
+					
 					res = true;
 				
 					

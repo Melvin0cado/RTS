@@ -9,6 +9,7 @@ public class Carre extends GameObject {
 	private final static double longueur = 10.0;
 	private boolean move = false;
 	private boolean selected = false;
+	private final double TRUESPEED = 1;
 	private double speed =1;
 	private double coeffX;
 	private double coeffY;
@@ -58,7 +59,7 @@ public class Carre extends GameObject {
 						this.getView().setTranslateY(this.getView().getTranslateY() - speed * coeffY);
 					}
 				
-				
+				System.out.println(this.coeffX*this.speed+this.coeffY*this.speed);
 			}
 		}
 	}
@@ -140,6 +141,10 @@ public class Carre extends GameObject {
 	public double getHeight() {
 		
 		return this.getView().getBoundsInParent().getHeight();
+	}
+
+	public double getTRUESPEED() {
+		return TRUESPEED;
 	}
 
 }
