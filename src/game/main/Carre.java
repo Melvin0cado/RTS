@@ -58,7 +58,6 @@ public class Carre extends GameObject {
 						this.getView().setTranslateY(this.getView().getTranslateY() - speed * coeffY);
 					}
 				
-				System.out.println(this.coeffX*this.speed+this.coeffY*this.speed);
 			}
 		}
 	}

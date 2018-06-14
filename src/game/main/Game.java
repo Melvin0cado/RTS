@@ -13,15 +13,20 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Game extends Application {
-	private ImageCursor cursor= new ImageCursor(new Image("./cursor.png"));
+	//private ImageCursor cursor= new ImageCursor(new Image("./cursor.png"));
 	
 	private Pane root;
 	private Controller controller = new Controller(root);
-	Rectangle rectBis;
+	private static Rectangle rectBis;
+	
+	// il faut crée un autre conteneur pour creer une map concrete que l'on pourra bouger a l'aider de MouseDrag et du middleClick
+	
 	private Parent createContent() {
 
 		root = new BorderPane();
 		root.setPrefSize(600, 600);
+		
+		
 		
 		rectBis = new Rectangle();
 		rectBis.setX(0);
@@ -29,6 +34,7 @@ public class Game extends Application {
 		rectBis.setWidth(1000);
 		rectBis.setHeight(1000);
 		rectBis.setFill(Color.grayRgb(26));
+		
 		root.getChildren().add(rectBis);
 				
 		controller.addCarre(new Carre(200,200, controller));
@@ -39,7 +45,7 @@ public class Game extends Application {
 		controller.addCarre(new Carre(270,370, controller));
 		controller.render(root);
 		
-		root.setCursor(cursor);
+		//root.setCursor(cursor);
 		
 		root.setOnMousePressed(new InputMouseClick(controller));
 		root.setOnMouseDragged(new InputMouseDrag (controller));
@@ -83,5 +89,15 @@ public class Game extends Application {
 
 		Application.launch(args);
 	}
+
+	public static Rectangle getRectBis() {
+		return rectBis;
+	}
+
+	public static void setRectBis(Rectangle rectBis) {
+		Game.rectBis = rectBis;
+	}
+	
+	
 
 }

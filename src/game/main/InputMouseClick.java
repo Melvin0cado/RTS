@@ -11,8 +11,12 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 	private double clickX;
 	private double clickY;
 	
-	private double coorX;
-	private double coorY;
+	private  double coorX; 
+	private  double coorY;
+	
+	private static double coorXmap;
+	private static double coorYmap;
+	
 	private Carre carre;
 	private RectSelect rect ;
 
@@ -80,6 +84,12 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 				}
 			}
 			
+			else if (e.isMiddleButtonDown()) {
+				
+				setCoorXmap(e.getX()-Game.getRectBis().getX());
+				setCoorYmap(e.getY()-Game.getRectBis().getY());
+			}
+			
 		}
 
 		
@@ -100,5 +110,39 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 	public void setClickY(double clickY) {
 		this.clickY = clickY;
 	}
+
+	public  double getCoorX() {
+		return coorX;
+	}
+
+	public  double getCoorY() {
+		return coorY;
+	}
+
+	public  void setCoorX(double coorX) {
+		this.coorX = coorX;
+	}
+
+	public  void setCoorY(double coorY) {
+		this.coorY = coorY;
+	}
+
+	public static double getCoorXmap() {
+		return coorXmap;
+	}
+
+	public static void setCoorXmap(double coorXmap) {
+		InputMouseClick.coorXmap = coorXmap;
+	}
+
+	public static double getCoorYmap() {
+		return coorYmap;
+	}
+
+	public static void setCoorYmap(double coorYmap) {
+		InputMouseClick.coorYmap = coorYmap;
+	}
+	
+	
 	
 }
