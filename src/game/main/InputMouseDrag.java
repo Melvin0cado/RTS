@@ -50,9 +50,9 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 		
 		else if (e.isMiddleButtonDown()) {
 			
-			Game.getRectBis().setX(e.getX()-InputMouseClick.getCoorXmap());
+			controller.getMap().getRect().setX(e.getX()-InputMouseClick.getCoorXmap());
 			
-			Game.getRectBis().setY(e.getY()-InputMouseClick.getCoorYmap());
+			controller.getMap().getRect().setY(e.getY()-InputMouseClick.getCoorYmap());
 			
 		}
 	}

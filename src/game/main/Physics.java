@@ -5,14 +5,16 @@ import java.util.LinkedList;
 public class Physics {
 
 	public static void calculVitesse(Carre carre) {
+		if(carre.isMove() && carre.getSpeed() != 0) {
+			carre.setSpeed(carre.getTRUESPEED()/(carre.getCoeffX()+carre.getCoeffY()));
+		}
 		
-		carre.setSpeed(carre.getTRUESPEED()/(carre.getCoeffX()+carre.getCoeffY()));
 			
 	}
 
 	public static void calculCoeff(Carre carre, double x , double y) {
 		
-		if ((x > carre.getX() && y > carre.getY())) { //coin en bas a droite
+		if ((x > carre.getX() && y > carre.getY())) { 
 			if (x - carre.getX() < y - carre.getY()) {
 				carre.setCoeffX(
 						(x - carre.getX()) / (y - carre.getY()));
@@ -128,6 +130,9 @@ public class Physics {
 					}
 					Physics.calculCoeff(carre, carre.getDestinationX(), carre.getDestinationY());
 					Physics.calculCoeff(carre2, carre2.getDestinationX(), carre2.getDestinationY());
+					Physics.calculVitesse(carre);
+					Physics.calculVitesse(carre2);
+					
 					carre.setMove(true);
 					carre2.setMove(true);
 					

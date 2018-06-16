@@ -86,8 +86,8 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 			
 			else if (e.isMiddleButtonDown()) {
 				
-				setCoorXmap(e.getX()-Game.getRectBis().getX());
-				setCoorYmap(e.getY()-Game.getRectBis().getY());
+				setCoorXmap(e.getX()-controller.getMap().getRect().getX());
+				setCoorYmap(e.getY()-controller.getMap().getRect().getY());
 			}
 			
 		}

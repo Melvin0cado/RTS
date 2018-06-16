@@ -12,9 +12,11 @@ public class Controller {
 	private LinkedList<Carre> ListObserver = new LinkedList<Carre>();
 	private Pane root;
 	private RectSelect rect = new RectSelect(0, 0, 0, 0, root,this);
+	private Map map;
 	
 	public Controller(Pane root) {
 		this.root = root;
+		 map = new Map(this.root);
 	}
 	
 	public LinkedList<Carre> getListCarre(){
@@ -35,12 +37,13 @@ public class Controller {
 		
 	}
 	
-	public void render(Pane root) {
+	public void render(Pane map) {
+				
 		
 		for(int i =0;i<this.getListCarre().size();i++) {
-			root.getChildren().add(this.getListCarre().get(i).getView());
+			map.getChildren().add(this.getListCarre().get(i).getView());
 		}
-		root.getChildren().add(rect);
+		map.getChildren().add(rect);
 		
 	}
 	
@@ -74,6 +77,14 @@ public class Controller {
 
 	public void setListObserver(LinkedList<Carre> listObserver) {
 		ListObserver = listObserver;
+	}
+
+	public Map getMap() {
+		return map;
+	}
+
+	public void setMap(Map map) {
+		this.map = map;
 	}
 
 

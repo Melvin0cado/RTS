@@ -17,33 +17,26 @@ public class Game extends Application {
 	
 	private Pane root;
 	private Controller controller = new Controller(root);
-	private static Rectangle rectBis;
+	
 	
 	// il faut crée un autre conteneur pour creer une map concrete que l'on pourra bouger a l'aider de MouseDrag et du middleClick
 	
 	private Parent createContent() {
 
-		root = new BorderPane();
+		root = new Pane();
 		root.setPrefSize(600, 600);
 		
-		
-		
-		rectBis = new Rectangle();
-		rectBis.setX(0);
-		rectBis.setY(0);
-		rectBis.setWidth(1000);
-		rectBis.setHeight(1000);
-		rectBis.setFill(Color.grayRgb(26));
-		
-		root.getChildren().add(rectBis);
-				
 		controller.addCarre(new Carre(200,200, controller));
 		controller.addCarre(new Carre(400,200, controller));
 		controller.addCarre(new Carre(200,300, controller));
 		controller.addCarre(new Carre(230,230, controller));
 		controller.addCarre(new Carre(430,230, controller));
 		controller.addCarre(new Carre(270,370, controller));
-		controller.render(root);
+		root.getChildren().add(controller.getMap());
+		
+		controller.render(controller.getMap());
+		
+		//il faut que chaque element de la map ai les meme deplacement que la map
 		
 		//root.setCursor(cursor);
 		
@@ -89,15 +82,5 @@ public class Game extends Application {
 
 		Application.launch(args);
 	}
-
-	public static Rectangle getRectBis() {
-		return rectBis;
-	}
-
-	public static void setRectBis(Rectangle rectBis) {
-		Game.rectBis = rectBis;
-	}
-	
-	
 
 }
