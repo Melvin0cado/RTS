@@ -9,13 +9,21 @@ public class Carre extends GameObject {
 	private final static double longueur = 10.0;
 	private boolean move = false;
 	private boolean selected = false;
-	private final double TRUESPEED = 1;
-	private double speed =1;
+	private final double TRUESPEED = 2;
+	private double speed =2;
 	private double coeffX;
 	private double coeffY;
 	private double destinationX;
 	private double destinationY;
+	private double destinationXBis;
+	private double destinationYBis;
+	
 	private boolean destFini ;
+	
+	private double xCarre;
+	private double yCarre;
+	
+	
 	
 	public Carre(double x, double y, Controller controller) {
 		super(new Rectangle(longueur, longueur, Color.BLUE));
@@ -30,21 +38,15 @@ public class Carre extends GameObject {
 		
 		Physics.CollisionCarreVSCarre(this, controller.getListCarre());
 		
-		//System.out.println(this.isMove()+","+this.isSelected());
-		//System.out.println(this.getView().getTranslateY()+", "+(destinationY+1));
 		if ( (int)this.getX() >=  (int)destinationX-1 && (int)this.getX() <= (int)destinationX+1
 				&&  (int)this.getY() >=  (int)destinationY-1 && (int)this.getY()<= (int)destinationY+1) {
 			this.setMove(false);
 			setDestFini(true);
 		} else {
-				
-				
+								
 				if (this.isMove()) {
 
 					setDestFini(false);
-//					System.out.println(coeffX+" , "+coeffY);
-//					System.out.print((int) (destinationX - this.getView().getTranslateX()) + " | ");
-//					System.out.println((int) (destinationY - this.getView().getTranslateY()));
 
 					if (this.getView().getTranslateX() < destinationX) {
 						this.getView().setTranslateX(this.getView().getTranslateX() + speed * coeffX);
@@ -143,6 +145,38 @@ public class Carre extends GameObject {
 
 	public double getTRUESPEED() {
 		return TRUESPEED;
+	}
+
+	public double getxCarre() {
+		return xCarre;
+	}
+
+	public void setxCarre(double xCarre) {
+		this.xCarre = xCarre;
+	}
+
+	public double getyCarre() {
+		return yCarre;
+	}
+
+	public void setyCarre(double yCarre) {
+		this.yCarre = yCarre;
+	}
+
+	public double getDestinationXBis() {
+		return destinationXBis;
+	}
+
+	public void setDestinationXBis(double destinationXBis) {
+		this.destinationXBis = destinationXBis;
+	}
+
+	public double getDestinationYBis() {
+		return destinationYBis;
+	}
+
+	public void setDestinationYBis(double destinationYBis) {
+		this.destinationYBis = destinationYBis;
 	}
 
 }

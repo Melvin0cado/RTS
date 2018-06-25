@@ -34,12 +34,10 @@ public class Controller {
 			carre.uptdate();
 		}
 		
-		
 	}
 	
 	public void render(Pane map) {
 				
-		
 		for(int i =0;i<this.getListCarre().size();i++) {
 			map.getChildren().add(this.getListCarre().get(i).getView());
 		}
@@ -86,6 +84,7 @@ public class Controller {
 	public void setMap(Map map) {
 		this.map = map;
 	}
+
 
 
 }

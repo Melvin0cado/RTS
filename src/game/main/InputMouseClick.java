@@ -1,6 +1,7 @@
 package game.main;
 
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -13,9 +14,6 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 	
 	private  double coorX; 
 	private  double coorY;
-	
-	private static double coorXmap;
-	private static double coorYmap;
 	
 	private Carre carre;
 	private RectSelect rect ;
@@ -39,7 +37,7 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 			
 			carre = controller.getListCarre().get(i);
 			coorX = e.getX() - (carre.getView().getBoundsInLocal().getWidth() /2);
-			coorY = e.getY() - (carre.getView().getBoundsInLocal().getHeight()/2);// on donne la destination du centre du carre
+			coorY = e.getY() - (carre.getView().getBoundsInLocal().getHeight()/2); // on donne la destination du centre du carre
 			
 			if(e.isSecondaryButtonDown()) {
 				
@@ -72,7 +70,7 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 					&& e.getY() > carre.getY())) {
 				
 					carre.setSelected(false);
-					//System.out.println("Selected false");
+				
 				}
 				else if (e.getX() < carre.getX() + carre.getView().getBoundsInLocal().getWidth()
 						&& e.getX() > carre.getX()
@@ -80,14 +78,34 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 						&& e.getY() > carre.getY()) {
 	
 					carre.setSelected(true);
-				//	System.out.println("Selected true");
+			
 				}
 			}
 			
 			else if (e.isMiddleButtonDown()) {
 				
-				setCoorXmap(e.getX()-controller.getMap().getRect().getX());
-				setCoorYmap(e.getY()-controller.getMap().getRect().getY());
+			
+				controller.getMap().setCoorXmap(controller.getMap().getRect().getX());
+				controller.getMap().setCoorYmap(controller.getMap().getRect().getY());
+				
+				controller.getMap().setClickX(e.getX());
+				controller.getMap().setClickY(e.getY());
+				
+				
+				Carre carre;
+				for(int x = 0;x<controller.getListCarre().size();x++) {
+					
+					carre = controller.getListCarre().get(x);
+					
+					carre.setxCarre(carre.getX());
+					carre.setyCarre(carre.getY());
+					
+					carre.setDestinationXBis(carre.getDestinationX());
+					carre.setDestinationYBis(carre.getDestinationY());
+					
+				}
+				
+				
 			}
 			
 		}
@@ -127,22 +145,4 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 		this.coorY = coorY;
 	}
 
-	public static double getCoorXmap() {
-		return coorXmap;
-	}
-
-	public static void setCoorXmap(double coorXmap) {
-		InputMouseClick.coorXmap = coorXmap;
-	}
-
-	public static double getCoorYmap() {
-		return coorYmap;
-	}
-
-	public static void setCoorYmap(double coorYmap) {
-		InputMouseClick.coorYmap = coorYmap;
-	}
-	
-	
-	
 }

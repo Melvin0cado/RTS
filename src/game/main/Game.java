@@ -24,7 +24,7 @@ public class Game extends Application {
 	private Parent createContent() {
 
 		root = new Pane();
-		root.setPrefSize(600, 600);
+		root.setPrefSize(700, 700);
 		
 		controller.addCarre(new Carre(200,200, controller));
 		controller.addCarre(new Carre(400,200, controller));
@@ -32,6 +32,7 @@ public class Game extends Application {
 		controller.addCarre(new Carre(230,230, controller));
 		controller.addCarre(new Carre(430,230, controller));
 		controller.addCarre(new Carre(270,370, controller));
+		
 		root.getChildren().add(controller.getMap());
 		
 		controller.render(controller.getMap());

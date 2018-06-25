@@ -4,6 +4,7 @@ package game.main;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
@@ -50,10 +51,29 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 		
 		else if (e.isMiddleButtonDown()) {
 			
-			controller.getMap().getRect().setX(e.getX()-InputMouseClick.getCoorXmap());
+			controller.getMap().getRect().setX(e.getX()-(controller.getMap().getClickX()-controller.getMap().getCoorXmap()));
+			controller.getMap().getRect().setY(e.getY()-(controller.getMap().getClickY()-controller.getMap().getCoorYmap()));
 			
-			controller.getMap().getRect().setY(e.getY()-InputMouseClick.getCoorYmap());
+			mapDeplacement(controller, e);
 			
+		}
+	}
+	
+	// faire bouger la map et en faisant bouger les carrés.
+	
+	
+	public static void mapDeplacement(Controller controller, MouseEvent e) {
+		
+		Carre carre;
+		
+		for(int i = 0 ; i<controller.getListCarre().size();i++) {
+			carre = controller.getListCarre().get(i);
+			
+			carre.getView().setTranslateX(e.getX()-(controller.getMap().getClickX()-carre.getxCarre()));
+			carre.getView().setTranslateY(e.getY()-(controller.getMap().getClickY()-carre.getyCarre()));
+		
+			carre.setDestinationX(e.getX()-(controller.getMap().getClickX()-carre.getDestinationXBis()));
+			carre.setDestinationY(e.getY()-(controller.getMap().getClickY()-carre.getDestinationYBis()));
 		}
 	}
 

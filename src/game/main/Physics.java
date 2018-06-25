@@ -4,69 +4,6 @@ import java.util.LinkedList;
 
 public class Physics {
 
-	public static void calculVitesse(Carre carre) {
-		if(carre.isMove() && carre.getSpeed() != 0) {
-			carre.setSpeed(carre.getTRUESPEED()/(carre.getCoeffX()+carre.getCoeffY()));
-		}
-		
-			
-	}
-
-	public static void calculCoeff(Carre carre, double x , double y) {
-		
-		if ((x > carre.getX() && y > carre.getY())) { 
-			if (x - carre.getX() < y - carre.getY()) {
-				carre.setCoeffX(
-						(x - carre.getX()) / (y - carre.getY()));
-				carre.setCoeffY(1);
-			} else {
-				carre.setCoeffY(
-						(y - carre.getY()) / (x - carre.getX()));
-				carre.setCoeffX(1);
-			}
-		}
-		if (x < carre.getX() && y < carre.getY()) {
-			if (x - carre.getX() < y - carre.getY()) {
-				carre.setCoeffY(
-						(y - carre.getY()) / (x - carre.getX()));
-				carre.setCoeffX(1);
-			} else {
-				carre.setCoeffX(
-						(x - carre.getX()) / (y - carre.getY()));
-				carre.setCoeffY(1);
-			}
-		}
-		if (x > carre.getX() && y < carre.getY()) {
-			if (x - carre.getX() < carre.getY() - y) {
-				carre.setCoeffX(
-						(carre.getX() - x) / (y - carre.getY()));
-				carre.setCoeffY(1);
-			} else {
-				carre.setCoeffY(
-						(y - carre.getY()) / (carre.getX() - x));
-				carre.setCoeffX(1);
-			}
-
-		}
-		if (x < carre.getX() && y > carre.getView().getTranslateY()) {
-			if (carre.getX() - x < y - carre.getView().getTranslateY()) {
-				carre.setCoeffX(
-						(x - carre.getX()) / (carre.getView().getTranslateY() - y));
-				carre.setCoeffY(1);
-			} else {
-				carre.setCoeffY(
-						(carre.getView().getTranslateY() - y) / (x - carre.getX()));
-				carre.setCoeffX(1);
-			}
-
-		}
-		
-		
-		Physics.calculVitesse(carre);
-		
-	}
-	
-
 	public static boolean CollisionCarreVSRect(Controller controller) {
 		boolean res = false ;
 		
@@ -144,5 +81,68 @@ public class Physics {
 		}
 		return res;
 	}
+	
+	public static void calculVitesse(Carre carre) {
+		if(carre.isMove() && carre.getSpeed() != 0) {
+			carre.setSpeed(carre.getTRUESPEED()/(carre.getCoeffX()+carre.getCoeffY()));
+		}
+		
+			
+	}
+
+	public static void calculCoeff(Carre carre, double x , double y) {
+		
+		if ((x > carre.getX() && y > carre.getY())) { 
+			if (x - carre.getX() < y - carre.getY()) {
+				carre.setCoeffX(
+						(x - carre.getX()) / (y - carre.getY()));
+				carre.setCoeffY(1);
+			} else {
+				carre.setCoeffY(
+						(y - carre.getY()) / (x - carre.getX()));
+				carre.setCoeffX(1);
+			}
+		}
+		if (x < carre.getX() && y < carre.getY()) {
+			if (x - carre.getX() < y - carre.getY()) {
+				carre.setCoeffY(
+						(y - carre.getY()) / (x - carre.getX()));
+				carre.setCoeffX(1);
+			} else {
+				carre.setCoeffX(
+						(x - carre.getX()) / (y - carre.getY()));
+				carre.setCoeffY(1);
+			}
+		}
+		if (x > carre.getX() && y < carre.getY()) {
+			if (x - carre.getX() < carre.getY() - y) {
+				carre.setCoeffX(
+						(carre.getX() - x) / (y - carre.getY()));
+				carre.setCoeffY(1);
+			} else {
+				carre.setCoeffY(
+						(y - carre.getY()) / (carre.getX() - x));
+				carre.setCoeffX(1);
+			}
+
+		}
+		if (x < carre.getX() && y > carre.getView().getTranslateY()) {
+			if (carre.getX() - x < y - carre.getView().getTranslateY()) {
+				carre.setCoeffX(
+						(x - carre.getX()) / (carre.getView().getTranslateY() - y));
+				carre.setCoeffY(1);
+			} else {
+				carre.setCoeffY(
+						(carre.getView().getTranslateY() - y) / (x - carre.getX()));
+				carre.setCoeffX(1);
+			}
+
+		}
+		
+		
+		Physics.calculVitesse(carre);
+		
+	}
+	
 }
 
