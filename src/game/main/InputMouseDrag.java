@@ -2,10 +2,6 @@ package game.main;
 
 
 import javafx.event.EventHandler;
-import javafx.scene.Cursor;
-import javafx.scene.ImageCursor;
-import javafx.scene.Node;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
 

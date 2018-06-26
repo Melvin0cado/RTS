@@ -2,14 +2,9 @@ package game.main;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Game extends Application {
@@ -45,7 +40,7 @@ public class Game extends Application {
 		
 		
 		Bottom bot = new Bottom(root);
-		
+		bot.toString();
 		AnimationTimer timer = new AnimationTimer() { // boucle de jeu.
 
 			@Override

@@ -9,7 +9,6 @@ import javafx.scene.shape.Rectangle;
 public class Bottom extends Pane{
 
 	private Rectangle rectangle;
-	private HBox hb;
 	private HBox hb2;
 	
 	private Button b1;
