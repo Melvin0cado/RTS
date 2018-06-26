@@ -9,7 +9,8 @@ public class Physics {
 		
 		for(int i=0;i<controller.getListCarre().size();i++) {
 			
-			if(controller.getRect().intersects(controller.getListCarre().get(i).getX(), controller.getListCarre().get(i).getY(),
+			if(controller.getRect().intersects(controller.getListCarre().get(i).getX()+controller.getMap().getTranslateX(),
+					controller.getListCarre().get(i).getY()+controller.getMap().getTranslateY(),
 					controller.getListCarre().get(i).getView().getBoundsInLocal().getWidth(),
 					controller.getListCarre().get(i).getView().getBoundsInLocal().getHeight())) {
 				

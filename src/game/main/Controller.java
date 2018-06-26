@@ -36,12 +36,12 @@ public class Controller {
 		
 	}
 	
-	public void render(Pane map) {
+	public void render(Pane root) {
 				
 		for(int i =0;i<this.getListCarre().size();i++) {
-			map.getChildren().add(this.getListCarre().get(i).getView());
+			root.getChildren().add(this.getListCarre().get(i).getView());
 		}
-		map.getChildren().add(rect);
+		
 		
 	}
 	

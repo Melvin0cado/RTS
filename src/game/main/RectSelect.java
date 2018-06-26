@@ -28,7 +28,6 @@ public class RectSelect extends Rectangle{
 
 	public void render() {
 		this.root.getChildren().add(this);
-		
 	}
 	
 

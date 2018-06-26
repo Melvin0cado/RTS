@@ -32,12 +32,12 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 			
 			clickX = e.getX();
 			clickY = e.getY();
-			rect.setClickX(clickX);
-			rect.setClickY(clickY); // on recupere les clicks de la souris
+			rect.setClickX(clickX); // on recupere les clicks de la souris
+			rect.setClickY(clickY); 
 			
 			carre = controller.getListCarre().get(i);
-			coorX = e.getX() - (carre.getView().getBoundsInLocal().getWidth() /2);
-			coorY = e.getY() - (carre.getView().getBoundsInLocal().getHeight()/2); // on donne la destination du centre du carre
+			coorX = e.getX() - (carre.getView().getBoundsInLocal().getWidth() /2); // on donne la destination du centre du carre
+			coorY = e.getY() - (carre.getView().getBoundsInLocal().getHeight()/2); 
 			
 			if(e.isSecondaryButtonDown()) {
 				
@@ -49,8 +49,8 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 				if (carre.isSelected()) {
 									
 					carre.setMove(true);
-					carre.setDestinationX(coorX);
-					carre.setDestinationY(coorY);
+					carre.setDestinationX(coorX-controller.getMap().getTranslateX()); // on ajoute la coordonnées voulu - les coordonnées de la map
+					carre.setDestinationY(coorY-controller.getMap().getTranslateY());
 		
 					Physics.calculCoeff(carre, carre.getDestinationX(), carre.getDestinationY());
 					
@@ -84,33 +84,13 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 			
 			else if (e.isMiddleButtonDown()) {
 				
-			
-				controller.getMap().setCoorXmap(controller.getMap().getRect().getX());
-				controller.getMap().setCoorYmap(controller.getMap().getRect().getY());
-				
-				controller.getMap().setClickX(e.getX());
-				controller.getMap().setClickY(e.getY());
-				
-				
-				Carre carre;
-				for(int x = 0;x<controller.getListCarre().size();x++) {
-					
-					carre = controller.getListCarre().get(x);
-					
-					carre.setxCarre(carre.getX());
-					carre.setyCarre(carre.getY());
-					
-					carre.setDestinationXBis(carre.getDestinationX());
-					carre.setDestinationYBis(carre.getDestinationY());
-					
-				}
-				
+				controller.getMap().setClickX(e.getX()-controller.getMap().getTranslateX());
+				controller.getMap().setClickY(e.getY()-controller.getMap().getTranslateY());
 				
 			}
 			
 		}
 
-		
 	}
 
 	public double getClickX() {

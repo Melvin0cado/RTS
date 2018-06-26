@@ -34,10 +34,8 @@ public class Game extends Application {
 		controller.addCarre(new Carre(270,370, controller));
 		
 		root.getChildren().add(controller.getMap());
-		
+		root.getChildren().add(controller.getRect());
 		controller.render(controller.getMap());
-		
-		//il faut que chaque element de la map ai les meme deplacement que la map
 		
 		//root.setCursor(cursor);
 		
