@@ -41,8 +41,8 @@ public class Physics {
 					
 					if( carre.getX() < carre2.getX() ) {
 						
-				
-						carre.setDestinationX(carre.getX()-carre.getLongueur()/2);
+						
+						carre.setDestinationX(carre.getX()-carre.getLongueur()/1.5);
 						carre.setDestinationY(carre.getY());
 						
 							
@@ -50,13 +50,13 @@ public class Physics {
 						
 					
 						carre.setDestinationX(carre.getX());
-						carre.setDestinationY(carre.getY()-carre.getLongueur()/2);
+						carre.setDestinationY(carre.getY()-carre.getLongueur()/1.5);
 						
 					}
 					if(carre.getX() > carre2.getX() ) {
 					
 						
-						carre.setDestinationX(carre.getX()+carre.getLongueur()/2);
+						carre.setDestinationX(carre.getX()+carre.getLongueur()/1.5);
 						carre.setDestinationY(carre.getY());
 						
 					}
@@ -65,7 +65,7 @@ public class Physics {
 						
 					
 						carre.setDestinationX(carre.getX());
-						carre.setDestinationY(carre.getY()+carre.getLongueur()/2);
+						carre.setDestinationY(carre.getY()+carre.getLongueur()/1.5);
 						
 					}
 					Physics.calculCoeff(carre, carre.getDestinationX(), carre.getDestinationY());
@@ -78,7 +78,6 @@ public class Physics {
 					
 					res = true;
 				
-					
 				}
 			}
 		}
@@ -90,7 +89,6 @@ public class Physics {
 			carre.setSpeed(carre.getTRUESPEED()/(carre.getCoeffX()+carre.getCoeffY()));
 		}
 		
-			
 	}
 
 	public static void calculCoeff(Carre carre, double x , double y) {

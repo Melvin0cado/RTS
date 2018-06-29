@@ -10,10 +10,7 @@ public class Controller {
 
 	private LinkedList<Carre> ListCarre = new LinkedList<Carre>();
 	private LinkedList<Carre> ListCarreMini = new LinkedList<Carre>();
-	
 	private LinkedList<Carre> ListCarreSelected = new LinkedList<Carre>();
-	
-	
 	
 	private Pane root;
 	private RectSelect rect = new RectSelect(0, 0, 0, 0, root,this);
@@ -21,12 +18,20 @@ public class Controller {
 	private Bottom bot;
 	
 	private double coeffMiniMap;
+	private double stageSurMapX;
+	private double stageSurMapY;
 	
 	public Controller(Pane root) {
 		this.root = root;
 		map = new Map(root);
 		bot = new Bottom(root);
-		 coeffMiniMap = this.getBot().getMiniMap().getPrefWidth()/this.getMap().getPrefWidth();
+		coeffMiniMap = this.getBot().getMiniMap().getPrefWidth()/this.getMap().getPrefWidth();
+		setStageSurMapX(this.getRoot().getPrefWidth()/this.getMap().getPrefWidth());
+		setStageSurMapY(this.getRoot().getPrefHeight()/this.getMap().getPrefHeight());
+		
+		this.getBot().getMiniMap().getRectVue().setWidth(this.getRoot().getPrefWidth()*coeffMiniMap);
+		this.getBot().getMiniMap().getRectVue().setHeight((this.getRoot().getPrefHeight()-this.getBot().getPrefHeight())*coeffMiniMap);
+		
 	}
 	
 	public LinkedList<Carre> getListCarre(){
@@ -49,8 +54,8 @@ public class Controller {
 			carre.uptdate();
 			
 		}
-		
-		
+		this.getBot().getMiniMap().getRectVue().setX(-this.getMap().getTranslateX()*coeffMiniMap);
+		this.getBot().getMiniMap().getRectVue().setY(-this.getMap().getTranslateY()*coeffMiniMap);
 		
 	}
 	
@@ -72,7 +77,7 @@ public class Controller {
 			carre.setCarreMiniMap(carre2);
 			
 			root.getChildren().add(carre);
-			 
+			
 			this.getBot().getMiniMap().getChildren().add(carre2);
 		}
 		
@@ -134,6 +139,22 @@ public class Controller {
 
 	public void setCoeffMiniMap(double coeffMiniMap) {
 		this.coeffMiniMap = coeffMiniMap;
+	}
+
+	public double getStageSurMapX() {
+		return stageSurMapX;
+	}
+
+	public void setStageSurMapX(double stageSurMapX) {
+		this.stageSurMapX = stageSurMapX;
+	}
+
+	public double getStageSurMapY() {
+		return stageSurMapY;
+	}
+
+	public void setStageSurMapY(double stageSurMapY) {
+		this.stageSurMapY = stageSurMapY;
 	}
 
 

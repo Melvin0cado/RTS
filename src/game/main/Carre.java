@@ -10,6 +10,8 @@ public class Carre extends Pane{
 	private double longueur = 10.0;
 	private boolean move = false;
 	private boolean selected = false;
+	private Color couleurInit;
+	private Color couleur;
 	private final double TRUESPEED = 2;
 	private double speed =2;
 	private double coeffX;
@@ -35,7 +37,8 @@ public class Carre extends Pane{
 		super.setWidth(10);
 		super.setHeight(10);
 		this.controller = controller;
-		
+		this.couleur = couleur;
+		this.couleurInit=couleur;
 		rect = new Rectangle(longueur,longueur,couleur);
 		this.destFini = true;
 		
@@ -81,6 +84,14 @@ public class Carre extends Pane{
 		}
 	}
 	
+	public Color getCouleur() {
+		return couleur;
+	}
+
+	public void setCouleur(Color couleur) {
+		this.couleur = couleur;
+	}
+
 	public double getX() {
 		
 		return super.getTranslateX();
