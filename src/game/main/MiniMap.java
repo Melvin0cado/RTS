@@ -1,5 +1,6 @@
 package game.main;
 
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -35,6 +36,13 @@ public class MiniMap extends Pane{
 		
 	}
 
+	public static boolean isClick(Controller controller, MouseEvent e) {
+		return e.getX() > controller.getBot().getMiniMap().getTranslateX() &&
+		e.getX() < controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getPrefWidth() &&
+		e.getY() > controller.getBot().getTranslateY() && 
+		e.getY() < controller.getBot().getTranslateY()+controller.getBot().getPrefHeight();
+	}
+	
 	public Rectangle getRectVue() {
 		return rectVue;
 	}

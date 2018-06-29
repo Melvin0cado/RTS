@@ -38,7 +38,7 @@ public class Carre extends Pane{
 		super.setHeight(10);
 		this.controller = controller;
 		this.couleur = couleur;
-		this.couleurInit=couleur;
+		this.setCouleurInit(couleur);
 		rect = new Rectangle(longueur,longueur,couleur);
 		this.destFini = true;
 		
@@ -237,6 +237,14 @@ public class Carre extends Pane{
 
 	public void setCarreMiniMap(Carre carreMiniMap) {
 		this.carreMiniMap = carreMiniMap;
+	}
+
+	public Color getCouleurInit() {
+		return couleurInit;
+	}
+
+	public void setCouleurInit(Color couleurInit) {
+		this.couleurInit = couleurInit;
 	}
 	
 	

@@ -23,6 +23,7 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 
 	public void handle(MouseEvent e) {
 		
+		
 		System.out.println(e.getX()+", "+e.getY());
 		
 		for(int i =0;i<controller.getListCarre().size();i++) {
@@ -33,15 +34,10 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 			rect.setClickY(clickY); 
 			
 			carre = controller.getListCarre().get(i);
-			coorX = e.getX() - (carre.getBoundsInLocal().getWidth() /2); // on donne la destination du centre du carre
-			coorY = e.getY() - (carre.getBoundsInLocal().getHeight()/2); 
+			coorX = e.getX() - (carre.getWidth() /2); // on donne la destination du centre du carre
+			coorY = e.getY() - (carre.getHeight()/2); 
 			
 			if(e.isSecondaryButtonDown()) {
-				
-				rect.setWidth(0);
-				rect.setHeight(0);
-				rect.setX(-10);
-				rect.setY(-10);
 				
 				if (carre.isSelected()) {
 									
@@ -56,22 +52,36 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 			
 			else if(e.isPrimaryButtonDown()){
 				
-				rect.setWidth(1);
-				rect.setHeight(1);
-				rect.setX(e.getX());
-				rect.setY(e.getY());
+				if(e.isPrimaryButtonDown()) {
+					
+					if(!Bottom.isClick(controller, e)) {
+						rect.setWidth(1);
+						rect.setHeight(1);
+						rect.setX(e.getX());
+						rect.setY(e.getY());
+					}
+						
+					
+				
 			
-				if(!(e.getX() < carre.getX() + carre.getBoundsInLocal().getWidth()
+			
+				if(MiniMap.isClick(controller, e)) {
+					
+					controller.getMap().setTranslateX((-e.getX()+controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getRectVue().getWidth()/2)/controller.getCoeffMiniMap()  );
+					controller.getMap().setTranslateY((-e.getY()+controller.getBot().getTranslateY()+controller.getBot().getMiniMap().getRectVue().getHeight()/2)/controller.getCoeffMiniMap());
+				}
+				
+				if(!(e.getX() < carre.getX() + carre.getWidth()
 					&& e.getX() > carre.getX()
-					&& e.getY() < carre.getY() + carre.getBoundsInLocal().getHeight()
+					&& e.getY() < carre.getY() + carre.getHeight()
 					&& e.getY() > carre.getY())) {
 				
 					carre.setSelected(false);
 				
 				}
-				else if (e.getX() < carre.getX() + carre.getBoundsInLocal().getWidth()
+				else if (e.getX() < carre.getX() + carre.getWidth()
 						&& e.getX() > carre.getX()
-						&& e.getY() < carre.getY() + carre.getBoundsInLocal().getHeight()
+						&& e.getY() < carre.getY() + carre.getHeight()
 						&& e.getY() > carre.getY()) {
 	
 					carre.setSelected(true);
@@ -86,8 +96,8 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 				
 			}
 			
+			}
 		}
-
 	}
 
 	public double getClickX() {

@@ -2,7 +2,6 @@ package game.main;
 
 import java.util.LinkedList;
 
-import javafx.scene.paint.Color;
 
 public class Physics {
 
@@ -139,7 +138,6 @@ public class Physics {
 			}
 
 		}
-		
 		
 		Physics.calculVitesse(carre);
 		
