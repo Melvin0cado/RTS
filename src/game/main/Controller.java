@@ -54,8 +54,14 @@ public class Controller {
 			carre.uptdate();
 			
 		}
-		this.getBot().getMiniMap().getRectVue().setX(-this.getMap().getTranslateX()*coeffMiniMap);
-		this.getBot().getMiniMap().getRectVue().setY(-this.getMap().getTranslateY()*coeffMiniMap);
+		if(this.getBot().getMiniMap().getRectVue().getTranslateX() < this.getBot().getMiniMap().getTranslateX() ) {
+			this.getBot().getMiniMap().getRectVue().setX(-this.getMap().getTranslateX()*coeffMiniMap);
+		}
+		
+		if(this.getBot().getMiniMap().getRectVue().getTranslateY() < this.getBot().getMiniMap().getTranslateY() ) {
+			this.getBot().getMiniMap().getRectVue().setY(-this.getMap().getTranslateY()*coeffMiniMap);
+		}
+		
 		
 	}
 	

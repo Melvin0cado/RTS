@@ -39,9 +39,17 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 	
 	public static void mapDeplacement(Controller controller, MouseEvent e) {
 		
-		controller.getMap().setTranslateX(e.getX()-controller.getMap().getClickX());
-		controller.getMap().setTranslateY(e.getY()-controller.getMap().getClickY());
-		
+		if(e.getX()-controller.getMap().getClickX() < 50 &&
+				e.getX()-controller.getMap().getClickX() >-controller.getMap().getPrefWidth()+controller.getRoot().getPrefWidth() -50) {
+			
+			controller.getMap().setTranslateX(e.getX()-controller.getMap().getClickX());
+		}
+		if(e.getY()-controller.getMap().getClickY() < 50 &&
+				e.getY()-controller.getMap().getClickY() > -controller.getMap().getPrefHeight()+controller.getRoot().getPrefHeight()-controller.getBot().getPrefHeight() -50 ) {
+			
+			controller.getMap().setTranslateY(e.getY()-controller.getMap().getClickY());
+		}
+				
 	}
 	
 	public static void controlRectSelect(Controller controller , MouseEvent e) {

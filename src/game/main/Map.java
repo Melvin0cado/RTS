@@ -30,7 +30,6 @@ public class Map extends Pane{
 		rect.setFill(Color.grayRgb(26));
 		rect.setStroke(Color.BLACK);
 		
-		
 		super.getChildren().add(rect);
 				
 	}
