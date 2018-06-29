@@ -4,6 +4,7 @@ package game.main;
 import java.util.LinkedList;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class Controller {
 
@@ -64,7 +65,7 @@ public class Controller {
 			carre = this.getListCarre().get(i);
 		
 			carre = this.getListCarre().get(i);
-			carre2 = new Carre(carre.getTranslateX()*coeffMiniMap, carre.getTranslateY()*coeffMiniMap, this);
+			carre2 = new Carre(carre.getTranslateX()*coeffMiniMap, carre.getTranslateY()*coeffMiniMap,Color.WHITE, this);
 			carre2.setLongueur(carre.getLongueur()*coeffMiniMap);
 			this.getListCarreMini().add(i, carre2);
 			

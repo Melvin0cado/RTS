@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Game extends Application {
@@ -32,12 +33,12 @@ public class Game extends Application {
 		
 		
 		controller = new Controller(root);
-		controller.addCarre(new Carre(200,200, controller));
-		controller.addCarre(new Carre(400,200, controller));
-		controller.addCarre(new Carre(200,300, controller));
-		controller.addCarre(new Carre(230,230, controller));
-		controller.addCarre(new Carre(430,230, controller));
-		controller.addCarre(new Carre(270,370, controller));
+		controller.addCarre(new Carre(200,200,Color.BLUE, controller));
+		controller.addCarre(new Carre(400,200,Color.BLUE, controller));
+		controller.addCarre(new Carre(200,300,Color.BLUE, controller));
+		controller.addCarre(new Carre(230,230,Color.BLUE, controller));
+		controller.addCarre(new Carre(430,230,Color.BLUE, controller));
+		controller.addCarre(new Carre(270,370,Color.BLUE, controller));
 		
 	
 		root.getChildren().add(controller.getMap());

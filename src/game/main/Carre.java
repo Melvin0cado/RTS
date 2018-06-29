@@ -28,7 +28,7 @@ public class Carre extends Pane{
 	
 	private Rectangle rect;
 	
-	public Carre(double x, double y, Controller controller) {
+	public Carre(double x, double y,Color couleur, Controller controller) {
 		super();
 		super.setTranslateX(x);
 		super.setTranslateY(y);
@@ -36,7 +36,7 @@ public class Carre extends Pane{
 		super.setHeight(10);
 		this.controller = controller;
 		
-		rect = new Rectangle(longueur,longueur,Color.BLUE);
+		rect = new Rectangle(longueur,longueur,couleur);
 		this.destFini = true;
 		
 		this.getChildren().add(rect);
