@@ -60,11 +60,7 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 						rect.setX(e.getX());
 						rect.setY(e.getY());
 					}
-						
-					
 				
-			
-			
 				if(MiniMap.isClick(controller, e)) {
 					
 					controller.getMap().setTranslateX((-e.getX()+controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getRectVue().getWidth()/2)/controller.getCoeffMiniMap()  );
