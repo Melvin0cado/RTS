@@ -18,15 +18,15 @@ public class Map extends Pane{
 		super();
 		super.setTranslateX(0);
 		super.setTranslateY(0);
-		super.setWidth(1000);
-		super.setHeight(1000);
-		super.setPrefWidth(1000);
-		super.setPrefHeight(1000);
+		super.setWidth(2000);
+		super.setHeight(2000);
+		super.setPrefWidth(2000);
+		super.setPrefHeight(2000);
 		rect =new Rectangle();
 		rect.setX(0);
 		rect.setY(0);
-		rect.setWidth(1000);
-		rect.setHeight(1000);
+		rect.setWidth(super.getPrefWidth());
+		rect.setHeight(super.getPrefHeight());
 		rect.setFill(Color.grayRgb(26));
 		rect.setStroke(Color.BLACK);
 		
