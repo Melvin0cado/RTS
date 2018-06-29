@@ -17,6 +17,7 @@ public class Bottom extends Pane{
 		super.setPrefWidth(root.getPrefHeight());
 		super.setPrefHeight(root.getPrefHeight()*0.2);
 		
+		
 		rectangle = new Rectangle();
 		rectangle.setFill(Color.gray(0.7));
 		rectangle.setWidth(root.getPrefWidth());

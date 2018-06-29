@@ -45,6 +45,7 @@ public class Carre extends Pane{
 
 	public void uptdate() {
 		
+		
 		Physics.CollisionCarreVSCarre(this, controller.getListCarre());
 		
 		if(carreMiniMap != null) {

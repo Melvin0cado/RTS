@@ -30,6 +30,7 @@ public class Game extends Application {
 		root = new Pane();
 		root.setPrefSize(fenetreWidth, fenetreHeight);
 		
+		
 		controller = new Controller(root);
 		controller.addCarre(new Carre(200,200, controller));
 		controller.addCarre(new Carre(400,200, controller));

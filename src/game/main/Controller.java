@@ -71,9 +71,10 @@ public class Controller {
 			carre.setCarreMiniMap(carre2);
 			
 			root.getChildren().add(carre);
-			
+			 
 			this.getBot().getMiniMap().getChildren().add(carre2);
 		}
+		
 		
 	}
 	
