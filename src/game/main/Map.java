@@ -20,7 +20,8 @@ public class Map extends Pane{
 		super.setTranslateY(0);
 		super.setWidth(1000);
 		super.setHeight(1000);
-		
+		super.setPrefWidth(1000);
+		super.setPrefHeight(1000);
 		rect =new Rectangle();
 		rect.setX(0);
 		rect.setY(0);
@@ -29,8 +30,9 @@ public class Map extends Pane{
 		rect.setFill(Color.grayRgb(26));
 		rect.setStroke(Color.BLACK);
 		
-		super.getChildren().add(rect);
 		
+		super.getChildren().add(rect);
+				
 	}
 
 	public Rectangle getRect() {

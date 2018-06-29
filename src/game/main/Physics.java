@@ -2,6 +2,8 @@ package game.main;
 
 import java.util.LinkedList;
 
+import javafx.scene.paint.Color;
+
 public class Physics {
 
 	public static boolean CollisionCarreVSRect(Controller controller) {
@@ -11,8 +13,8 @@ public class Physics {
 			
 			if(controller.getRect().intersects(controller.getListCarre().get(i).getX()+controller.getMap().getTranslateX(),
 					controller.getListCarre().get(i).getY()+controller.getMap().getTranslateY(),
-					controller.getListCarre().get(i).getView().getBoundsInLocal().getWidth(),
-					controller.getListCarre().get(i).getView().getBoundsInLocal().getHeight())) {
+					controller.getListCarre().get(i).getBoundsInLocal().getWidth(),
+					controller.getListCarre().get(i).getBoundsInLocal().getHeight())) {
 				
 				controller.getListCarre().get(i).setSelected(true);
 				controller.getListCarreSelected().add(controller.getListCarre().get(i));
@@ -33,7 +35,7 @@ public class Physics {
 			carre2= carres.get(i);
 			
 			if(carre != carre2 && carre.isDestFini()) {
-				if(carre.getView().getBoundsInParent().intersects(carre2.getView().getBoundsInParent())){
+				if(carre.getBoundsInParent().intersects(carre2.getBoundsInParent())){
 					carre.setMove(false);
 					carre2.setMove(false);
 					
@@ -127,14 +129,14 @@ public class Physics {
 			}
 
 		}
-		if (x < carre.getX() && y > carre.getView().getTranslateY()) {
-			if (carre.getX() - x < y - carre.getView().getTranslateY()) {
+		if (x < carre.getX() && y > carre.getTranslateY()) {
+			if (carre.getX() - x < y - carre.getTranslateY()) {
 				carre.setCoeffX(
-						(x - carre.getX()) / (carre.getView().getTranslateY() - y));
+						(x - carre.getX()) / (carre.getTranslateY() - y));
 				carre.setCoeffY(1);
 			} else {
 				carre.setCoeffY(
-						(carre.getView().getTranslateY() - y) / (x - carre.getX()));
+						(carre.getTranslateY() - y) / (x - carre.getX()));
 				carre.setCoeffX(1);
 			}
 

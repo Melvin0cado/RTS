@@ -33,8 +33,8 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 			rect.setClickY(clickY); 
 			
 			carre = controller.getListCarre().get(i);
-			coorX = e.getX() - (carre.getView().getBoundsInLocal().getWidth() /2); // on donne la destination du centre du carre
-			coorY = e.getY() - (carre.getView().getBoundsInLocal().getHeight()/2); 
+			coorX = e.getX() - (carre.getBoundsInLocal().getWidth() /2); // on donne la destination du centre du carre
+			coorY = e.getY() - (carre.getBoundsInLocal().getHeight()/2); 
 			
 			if(e.isSecondaryButtonDown()) {
 				
@@ -46,9 +46,9 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 				if (carre.isSelected()) {
 									
 					carre.setMove(true);
-					carre.setDestinationX(coorX-controller.getMap().getTranslateX()); // on ajoute la coordonnées voulu - les coordonnées de la map
+					carre.setDestinationX(coorX-controller.getMap().getTranslateX()); // on ajoute la coordonnées voulu moins les coordonnées de la map
 					carre.setDestinationY(coorY-controller.getMap().getTranslateY());
-		
+					
 					Physics.calculCoeff(carre, carre.getDestinationX(), carre.getDestinationY());
 					
 				}
@@ -61,17 +61,17 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 				rect.setX(e.getX());
 				rect.setY(e.getY());
 			
-				if(!(e.getX() < carre.getX() + carre.getView().getBoundsInLocal().getWidth()
+				if(!(e.getX() < carre.getX() + carre.getBoundsInLocal().getWidth()
 					&& e.getX() > carre.getX()
-					&& e.getY() < carre.getY() + carre.getView().getBoundsInLocal().getHeight()
+					&& e.getY() < carre.getY() + carre.getBoundsInLocal().getHeight()
 					&& e.getY() > carre.getY())) {
 				
 					carre.setSelected(false);
 				
 				}
-				else if (e.getX() < carre.getX() + carre.getView().getBoundsInLocal().getWidth()
+				else if (e.getX() < carre.getX() + carre.getBoundsInLocal().getWidth()
 						&& e.getX() > carre.getX()
-						&& e.getY() < carre.getY() + carre.getView().getBoundsInLocal().getHeight()
+						&& e.getY() < carre.getY() + carre.getBoundsInLocal().getHeight()
 						&& e.getY() > carre.getY()) {
 	
 					carre.setSelected(true);

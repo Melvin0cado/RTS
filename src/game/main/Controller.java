@@ -8,15 +8,24 @@ import javafx.scene.layout.Pane;
 public class Controller {
 
 	private LinkedList<Carre> ListCarre = new LinkedList<Carre>();
+	private LinkedList<Carre> ListCarreMini = new LinkedList<Carre>();
+	
 	private LinkedList<Carre> ListCarreSelected = new LinkedList<Carre>();
-	private LinkedList<Carre> ListObserver = new LinkedList<Carre>();
+	
+	
+	
 	private Pane root;
 	private RectSelect rect = new RectSelect(0, 0, 0, 0, root,this);
 	private Map map;
+	private Bottom bot;
+	
+	private double coeffMiniMap;
 	
 	public Controller(Pane root) {
 		this.root = root;
-		 map = new Map(this.root);
+		map = new Map(root);
+		bot = new Bottom(root);
+		 coeffMiniMap = this.getBot().getMiniMap().getPrefWidth()/this.getMap().getPrefWidth();
 	}
 	
 	public LinkedList<Carre> getListCarre(){
@@ -26,22 +35,45 @@ public class Controller {
 	public void addCarre(Carre carre) {
 		
 		ListCarre.add(carre);
+		ListCarreMini.add(carre);
 	}
 		
 	public void uptdate() {
 		
-		for(Carre carre : ListCarre) {
+		Carre carre;
+		
+		for(int i = 0 ; i<this.getListCarre().size();i++) {
+			
+			carre = this.getListCarre().get(i);
 			carre.uptdate();
+			
 		}
+		
+		
 		
 	}
 	
+	
+	
 	public void render(Pane root) {
 				
+		Carre carre;
+		Carre carre2;
 		for(int i =0;i<this.getListCarre().size();i++) {
-			root.getChildren().add(this.getListCarre().get(i).getView());
-		}
+			
+			carre = this.getListCarre().get(i);
 		
+			carre = this.getListCarre().get(i);
+			carre2 = new Carre(carre.getTranslateX()*coeffMiniMap, carre.getTranslateY()*coeffMiniMap, this);
+			carre2.setLongueur(carre.getLongueur()*coeffMiniMap);
+			this.getListCarreMini().add(i, carre2);
+			
+			carre.setCarreMiniMap(carre2);
+			
+			root.getChildren().add(carre);
+			
+			this.getBot().getMiniMap().getChildren().add(carre2);
+		}
 		
 	}
 	
@@ -67,14 +99,7 @@ public class Controller {
 
 	public void setListCarreSelected(LinkedList<Carre> listCarreSelected) {
 		ListCarreSelected = listCarreSelected;
-	}
-
-	public LinkedList<Carre> getListObserver() {
-		return ListObserver;
-	}
-
-	public void setListObserver(LinkedList<Carre> listObserver) {
-		ListObserver = listObserver;
+		
 	}
 
 	public Map getMap() {
@@ -83,6 +108,30 @@ public class Controller {
 
 	public void setMap(Map map) {
 		this.map = map;
+	}
+
+	public Bottom getBot() {
+		return bot;
+	}
+
+	public void setBot(Bottom bot) {
+		this.bot = bot;
+	}
+
+	public LinkedList<Carre> getListCarreMini() {
+		return ListCarreMini;
+	}
+
+	public void setListCarreMini(LinkedList<Carre> listCarreMini) {
+		ListCarreMini = listCarreMini;
+	}
+
+	public double getCoeffMiniMap() {
+		return coeffMiniMap;
+	}
+
+	public void setCoeffMiniMap(double coeffMiniMap) {
+		this.coeffMiniMap = coeffMiniMap;
 	}
 
 

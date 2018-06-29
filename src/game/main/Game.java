@@ -1,5 +1,8 @@
 package game.main;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -8,19 +11,26 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Game extends Application {
-	//private ImageCursor cursor= new ImageCursor(new Image("./cursor.png"));
+	// private ImageCursor cursor= new ImageCursor(new Image("./cursor.png"));
 	
 	private Pane root;
-	private Controller controller = new Controller(root);
-	
+	private Controller controller ;
+	private Dimension dimensionEcran = Toolkit.getDefaultToolkit().getScreenSize();
+	private double widthEcran = dimensionEcran.getWidth();
+	private double heightEcran = dimensionEcran.getHeight();
 	
 	// il faut crée un autre conteneur pour creer une map concrete que l'on pourra bouger a l'aider de MouseDrag et du middleClick
 	
 	private Parent createContent() {
 
-		root = new Pane();
-		root.setPrefSize(700, 700);
 		
+		double fenetreWidth = widthEcran*0.51471;
+		double fenetreHeight =  heightEcran*0.908;
+				
+		root = new Pane();
+		root.setPrefSize(fenetreWidth, fenetreHeight);
+		
+		controller = new Controller(root);
 		controller.addCarre(new Carre(200,200, controller));
 		controller.addCarre(new Carre(400,200, controller));
 		controller.addCarre(new Carre(200,300, controller));
@@ -28,8 +38,11 @@ public class Game extends Application {
 		controller.addCarre(new Carre(430,230, controller));
 		controller.addCarre(new Carre(270,370, controller));
 		
+	
 		root.getChildren().add(controller.getMap());
+		root.getChildren().add(controller.getBot());
 		root.getChildren().add(controller.getRect());
+		
 		controller.render(controller.getMap());
 		
 		//root.setCursor(cursor);
@@ -38,14 +51,10 @@ public class Game extends Application {
 		root.setOnMouseDragged(new InputMouseDrag (controller));
 		root.setOnMouseReleased(new InputMouseReleased(controller));
 		
-		
-		Bottom bot = new Bottom(root);
-		bot.toString();
 		AnimationTimer timer = new AnimationTimer() { // boucle de jeu.
 
 			@Override
 			public void handle(long now){
-
 				onUpdate();
 			}
 		};
@@ -67,7 +76,7 @@ public class Game extends Application {
 		
 		stage.setScene(scene);
 		stage.setAlwaysOnTop(true);
-		
+		stage.setResizable(false);
 		stage.show();
 
 	}

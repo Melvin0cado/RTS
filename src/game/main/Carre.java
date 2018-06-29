@@ -1,12 +1,13 @@
 package game.main;
 
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Carre extends GameObject {
+public class Carre extends Pane{
 
 	private Controller controller;
-	private final static double longueur = 10.0;
+	private double longueur = 10.0;
 	private boolean move = false;
 	private boolean selected = false;
 	private final double TRUESPEED = 2;
@@ -23,20 +24,35 @@ public class Carre extends GameObject {
 	private double xCarre;
 	private double yCarre;
 	
+	private Carre carreMiniMap;
 	
+	private Rectangle rect;
 	
 	public Carre(double x, double y, Controller controller) {
-		super(new Rectangle(longueur, longueur, Color.BLUE));
-		this.getView().setTranslateX(x);
-		this.getView().setTranslateY(y);
+		super();
+		super.setTranslateX(x);
+		super.setTranslateY(y);
+		super.setWidth(10);
+		super.setHeight(10);
 		this.controller = controller;
+		
+		rect = new Rectangle(longueur,longueur,Color.BLUE);
 		this.destFini = true;
+		
+		this.getChildren().add(rect);
 		
 	}
 
 	public void uptdate() {
 		
 		Physics.CollisionCarreVSCarre(this, controller.getListCarre());
+		
+		if(carreMiniMap != null) {
+			
+			carreMiniMap.setTranslateX(this.getTranslateX()*controller.getCoeffMiniMap());
+			carreMiniMap.setTranslateY(this.getTranslateY()*controller.getCoeffMiniMap());
+			
+		}
 		
 		if ( (int)this.getX() >=  (int)destinationX-1 && (int)this.getX() <= (int)destinationX+1
 				&&  (int)this.getY() >=  (int)destinationY-1 && (int)this.getY()<= (int)destinationY+1) {
@@ -48,20 +64,30 @@ public class Carre extends GameObject {
 
 					setDestFini(false);
 
-					if (this.getView().getTranslateX() < destinationX) {
-						this.getView().setTranslateX(this.getView().getTranslateX() + speed * coeffX);
-					} else if (this.getView().getTranslateX() > destinationX) {
-						this.getView().setTranslateX(this.getView().getTranslateX() - speed * coeffX);
+					if (super.getTranslateX() < destinationX) {
+						super.setTranslateX(super.getTranslateX() + speed * coeffX);
+					} else if (super.getTranslateX() > destinationX) {
+						super.setTranslateX(super.getTranslateX() - speed * coeffX);
 					}
 
-					if (this.getView().getTranslateY() < destinationY) {
-						this.getView().setTranslateY(this.getView().getTranslateY() + speed * coeffY);
-					} else if (this.getView().getTranslateY() > destinationY) {
-						this.getView().setTranslateY(this.getView().getTranslateY() - speed * coeffY);
+					if (super.getTranslateY() < destinationY) {
+						super.setTranslateY(super.getTranslateY() + speed * coeffY);
+					} else if (super.getTranslateY() > destinationY) {
+						super.setTranslateY(super.getTranslateY() - speed * coeffY);
 					}
 				
 			}
 		}
+	}
+	
+	public double getX() {
+		
+		return super.getTranslateX();
+	}
+	
+	public double getY() {
+		
+		return super.getTranslateY();
 	}
 	
 	
@@ -103,6 +129,13 @@ public class Carre extends GameObject {
 
 	public void setSelected(boolean selected) {
 		this.selected = selected;
+		if(selected) {
+			this.rect.setStroke(Color.YELLOW);
+		}else {
+			this.rect.setStroke(null);
+			
+		}
+		
 	}
 
 	public double getCoeffX() {
@@ -131,16 +164,6 @@ public class Carre extends GameObject {
 
 	public void setDestFini(boolean destFini) {
 		this.destFini = destFini;
-	}
-
-	public double getWidth() {
-		
-		return this.getView().getBoundsInParent().getWidth();
-	}
-	
-	public double getHeight() {
-		
-		return this.getView().getBoundsInParent().getHeight();
 	}
 
 	public double getTRUESPEED() {
@@ -178,5 +201,32 @@ public class Carre extends GameObject {
 	public void setDestinationYBis(double destinationYBis) {
 		this.destinationYBis = destinationYBis;
 	}
+
+	public Rectangle getRect() {
+		return rect;
+	}
+
+	public void setRect(Rectangle rect) {
+		this.rect = rect;
+	}
+
+	public void setLongueur(double longueur) {
+		this.longueur = longueur;
+		this.setPrefWidth(longueur);
+		this.setPrefHeight(longueur);
+		this.getRect().setWidth(longueur);
+		this.getRect().setHeight(longueur);
+		
+	}
+
+	public Carre getCarreMiniMap() {
+		return carreMiniMap;
+	}
+
+	public void setCarreMiniMap(Carre carreMiniMap) {
+		this.carreMiniMap = carreMiniMap;
+	}
+	
+	
 
 }
