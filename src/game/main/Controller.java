@@ -54,11 +54,13 @@ public class Controller {
 			carre.uptdate();
 			
 		}
-		if(this.getBot().getMiniMap().getRectVue().getTranslateX() < this.getBot().getMiniMap().getTranslateX() ) {
+		if(this.getMap().getTranslateX() < this.getRoot().getTranslateX()-10 &&
+				this.getMap().getTranslateX()+this.getMap().getPrefWidth() > this.getRoot().getPrefWidth()+10 ) {
 			this.getBot().getMiniMap().getRectVue().setX(-this.getMap().getTranslateX()*coeffMiniMap);
 		}
 		
-		if(this.getBot().getMiniMap().getRectVue().getTranslateY() < this.getBot().getMiniMap().getTranslateY() ) {
+		if(this.getMap().getTranslateY() < this.getRoot().getTranslateY()-10 &&
+				this.getMap().getTranslateY()+this.getMap().getPrefHeight()+this.getBot().getPrefHeight() > this.getRoot().getPrefHeight()+10 ) {
 			this.getBot().getMiniMap().getRectVue().setY(-this.getMap().getTranslateY()*coeffMiniMap);
 		}
 		

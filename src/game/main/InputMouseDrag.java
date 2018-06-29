@@ -1,8 +1,8 @@
 package game.main;
 
-
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 
 
 public class InputMouseDrag implements EventHandler<MouseEvent>{
@@ -25,6 +25,7 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 		if(e.isPrimaryButtonDown()) {
 			
 			controlRectSelect(controller , e);
+			
 		}
 		
 		else if (e.isMiddleButtonDown()) {
@@ -34,13 +35,10 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 		}
 	}
 	
-	// Faire bouger la map et en faisant bouger les carrés.
-	
-	
 	public static void mapDeplacement(Controller controller, MouseEvent e) {
 		
 		if(e.getX()-controller.getMap().getClickX() < 50 &&
-				e.getX()-controller.getMap().getClickX() >-controller.getMap().getPrefWidth()+controller.getRoot().getPrefWidth() -50) {
+				e.getX()-controller.getMap().getClickX() > -controller.getMap().getPrefWidth()+controller.getRoot().getPrefWidth() -50) {
 			
 			controller.getMap().setTranslateX(e.getX()-controller.getMap().getClickX());
 		}
