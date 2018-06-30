@@ -24,7 +24,7 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 			}
 			
 			
-			if(MiniMap.isClick(controller, e)) {
+			else if(MiniMap.isClick(controller, e)) {
 				
 				controller.getMap().setTranslateX((-e.getX()+controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getRectVue().getWidth()/2)/controller.getCoeffMiniMap() );
 				controller.getMap().setTranslateY((-e.getY()+controller.getBot().getTranslateY()+controller.getBot().getMiniMap().getRectVue().getHeight()/2)/controller.getCoeffMiniMap());
@@ -33,6 +33,7 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 		
 		else if (e.isMiddleButtonDown()) {
 		
+			
 			mapDeplacement(controller, e);
 		}
 			

@@ -11,7 +11,6 @@ public class Map extends Pane{
 	private double clickX;
 	private double clickY;
 	
-	
 	public Map(Pane root) {
 		super();
 		super.setTranslateX(0);
@@ -31,7 +30,7 @@ public class Map extends Pane{
 		super.getChildren().add(rect);
 				
 	}
-
+	
 	public double getClickX() {
 		return clickX;
 	}

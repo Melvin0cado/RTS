@@ -53,22 +53,20 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 			
 			else if(e.isPrimaryButtonDown()){
 				
-				if(e.isPrimaryButtonDown()) {
-					
-					if(!Bottom.isClick(controller, e)) {
+				if(!Bottom.isClick(controller, e)) {
 						rect.setWidth(1);
 						rect.setHeight(1);
 						rect.setX(e.getX());
 						rect.setY(e.getY());
-					}
+				}
 				
-				if(MiniMap.isClick(controller, e)) {
+				else if(MiniMap.isClick(controller, e)) {
 					
 					controller.getMap().setTranslateX((-e.getX()+controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getRectVue().getWidth()/2)/controller.getCoeffMiniMap()  );
 					controller.getMap().setTranslateY((-e.getY()+controller.getBot().getTranslateY()+controller.getBot().getMiniMap().getRectVue().getHeight()/2)/controller.getCoeffMiniMap());
 				}
 				
-				if(!(e.getX() < carre.getX() + carre.getWidth()
+				else if(!(e.getX() < carre.getX() + carre.getWidth()
 					&& e.getX() > carre.getX()
 					&& e.getY() < carre.getY() + carre.getHeight()
 					&& e.getY() > carre.getY())) {
@@ -78,7 +76,7 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 				}
 			}
 			
-			}
+			
 			else if (e.isMiddleButtonDown()) {
 				
 				controller.getMap().setClickX(e.getX()-controller.getMap().getTranslateX());
