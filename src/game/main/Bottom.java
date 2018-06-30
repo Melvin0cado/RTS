@@ -20,7 +20,7 @@ public class Bottom extends Pane{
 		
 		
 		rectangle = new Rectangle();
-		rectangle.setFill(Color.gray(0.7));
+		rectangle.setFill(Color.gray(0.7, 0.4));
 		rectangle.setWidth(root.getPrefWidth());
 		rectangle.setHeight(root.getPrefHeight()*0.2);
 		
