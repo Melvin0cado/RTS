@@ -18,7 +18,6 @@ public class Bottom extends Pane{
 		super.setPrefWidth(root.getPrefHeight());
 		super.setPrefHeight(root.getPrefHeight()*0.2);
 		
-		
 		rectangle = new Rectangle();
 		rectangle.setFill(Color.gray(0.7, 0.4));
 		rectangle.setWidth(root.getPrefWidth());
@@ -28,7 +27,6 @@ public class Bottom extends Pane{
 		
 		super.getChildren().add(rectangle);
 		super.getChildren().add(miniMap);
-		
 		
 	}
 
