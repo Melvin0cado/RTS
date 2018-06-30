@@ -41,5 +41,4 @@ public class Bottom extends Pane{
 	public MiniMap getMiniMap() {
 		return miniMap;
 	}
-	
 }
