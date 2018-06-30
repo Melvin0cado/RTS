@@ -9,10 +9,8 @@ import javafx.scene.shape.Rectangle;
 
 public class RectSelect extends Rectangle{
 
-	private Pane root;
 	private double clickX;
 	private double clickY;
-	
 	
 	public RectSelect(double x, double y, double width, double height , Pane root , Controller controller) {
 		super();
@@ -22,14 +20,8 @@ public class RectSelect extends Rectangle{
 		this.setHeight(height);
 		this.setFill(Color.TRANSPARENT);
 		this.setStroke(Color.rgb(0, 0, 0));
-		this.root = root;
 		
 	}
-
-	public void render() {
-		this.root.getChildren().add(this);
-	}
-	
 
 	public double getClickX() {
 		return clickX;

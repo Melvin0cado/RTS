@@ -6,6 +6,7 @@ import javafx.scene.input.MouseEvent;
 public class InputMouseClick implements EventHandler<MouseEvent> {
 
 	private Controller controller;
+	
 	private double clickX;
 	private double clickY;
 	
@@ -75,14 +76,6 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 					carre.setSelected(false);
 				
 				}
-				else if (e.getX() < carre.getX() + carre.getWidth()
-						&& e.getX() > carre.getX()
-						&& e.getY() < carre.getY() + carre.getHeight()
-						&& e.getY() > carre.getY()) {
-	
-					carre.setSelected(true);
-			
-				}
 			}
 			
 			}
@@ -95,38 +88,6 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 			
 			
 		}
-	}
-
-	public double getClickX() {
-		return clickX;
-	}
-
-	public void setClickX(double clickX) {
-		this.clickX = clickX;
-	}
-
-	public double getClickY() {
-		return clickY;
-	}
-
-	public void setClickY(double clickY) {
-		this.clickY = clickY;
-	}
-
-	public  double getCoorX() {
-		return coorX;
-	}
-
-	public  double getCoorY() {
-		return coorY;
-	}
-
-	public  void setCoorX(double coorX) {
-		this.coorX = coorX;
-	}
-
-	public  void setCoorY(double coorY) {
-		this.coorY = coorY;
 	}
 
 }

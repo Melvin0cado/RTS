@@ -84,7 +84,7 @@ public class Physics {
 	}
 	
 	public static void calculVitesse(Carre carre) {
-		if(carre.isMove() && carre.getSpeed() != 0) {
+		if(carre.isMove()) {
 			carre.setSpeed(carre.getTRUESPEED()/(carre.getCoeffX()+carre.getCoeffY()));
 		}
 		

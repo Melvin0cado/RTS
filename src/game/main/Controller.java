@@ -18,16 +18,13 @@ public class Controller {
 	private Bottom bot;
 	
 	private double coeffMiniMap;
-	private double stageSurMapX;
-	private double stageSurMapY;
 	
 	public Controller(Pane root) {
 		this.root = root;
 		map = new Map(root);
 		bot = new Bottom(root);
 		coeffMiniMap = this.getBot().getMiniMap().getPrefWidth()/this.getMap().getPrefWidth();
-		setStageSurMapX(this.getRoot().getPrefWidth()/this.getMap().getPrefWidth());
-		setStageSurMapY(this.getRoot().getPrefHeight()/this.getMap().getPrefHeight());
+		new Physics();
 		
 		this.getBot().getMiniMap().getRectVue().setWidth(this.getRoot().getPrefWidth()*coeffMiniMap);
 		this.getBot().getMiniMap().getRectVue().setHeight((this.getRoot().getPrefHeight()-this.getBot().getPrefHeight())*coeffMiniMap);
@@ -96,75 +93,31 @@ public class Controller {
 		return root;
 	}
 
-	public void setRoot(Pane root) {
-		this.root = root;
-	}
-
 	public RectSelect getRect() {
 		return rect;
-	}
-
-	public void setRect(RectSelect rect) {
-		this.rect = rect;
 	}
 
 	public LinkedList<Carre> getListCarreSelected() {
 		return ListCarreSelected;
 	}
 
-	public void setListCarreSelected(LinkedList<Carre> listCarreSelected) {
-		ListCarreSelected = listCarreSelected;
-		
-	}
 
 	public Map getMap() {
 		return map;
 	}
 
-	public void setMap(Map map) {
-		this.map = map;
-	}
 
 	public Bottom getBot() {
 		return bot;
 	}
 
-	public void setBot(Bottom bot) {
-		this.bot = bot;
-	}
 
 	public LinkedList<Carre> getListCarreMini() {
 		return ListCarreMini;
 	}
 
-	public void setListCarreMini(LinkedList<Carre> listCarreMini) {
-		ListCarreMini = listCarreMini;
-	}
-
 	public double getCoeffMiniMap() {
 		return coeffMiniMap;
 	}
-
-	public void setCoeffMiniMap(double coeffMiniMap) {
-		this.coeffMiniMap = coeffMiniMap;
-	}
-
-	public double getStageSurMapX() {
-		return stageSurMapX;
-	}
-
-	public void setStageSurMapX(double stageSurMapX) {
-		this.stageSurMapX = stageSurMapX;
-	}
-
-	public double getStageSurMapY() {
-		return stageSurMapY;
-	}
-
-	public void setStageSurMapY(double stageSurMapY) {
-		this.stageSurMapY = stageSurMapY;
-	}
-
-
 
 }

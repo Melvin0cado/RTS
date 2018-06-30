@@ -40,23 +40,8 @@ public class Bottom extends Pane{
 				e.getY() < controller.getBot().getTranslateY()+controller.getBot().getPrefHeight() ;
 	}
 	
-	public Rectangle getRectangle() {
-		return rectangle;
-	}
-
 	public MiniMap getMiniMap() {
 		return miniMap;
 	}
-
-	public void setRectangle(Rectangle rectangle) {
-		this.rectangle = rectangle;
-	}
-
-	public void setMiniMap(MiniMap miniMap) {
-		this.miniMap = miniMap;
-	}
-	
-	
-	
 	
 }

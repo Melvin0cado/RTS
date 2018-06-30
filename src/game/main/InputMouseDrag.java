@@ -6,9 +6,6 @@ import javafx.scene.input.MouseEvent;
 
 public class InputMouseDrag implements EventHandler<MouseEvent>{
 
-	private double clickX;
-	private double clickY;
-	
 	private Controller controller;
 	
 	public InputMouseDrag(Controller controller) {
@@ -82,22 +79,6 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 			rect.setX(e.getX());
 			rect.setWidth(rect.getClickX()-e.getX());
 		}
-	}
-
-	public double getClickX() {
-		return clickX;
-	}
-
-	public void setClickX(double clickX) {
-		this.clickX = clickX;
-	}
-
-	public double getClickY() {
-		return clickY;
-	}
-
-	public void setClickY(double clickY) {
-		this.clickY = clickY;
 	}
 
 }

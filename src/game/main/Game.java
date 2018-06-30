@@ -20,8 +20,6 @@ public class Game extends Application {
 	private double widthEcran = dimensionEcran.getWidth();
 	private double heightEcran = dimensionEcran.getHeight();
 	
-	// il faut crée un autre conteneur pour creer une map concrete que l'on pourra bouger a l'aider de MouseDrag et du middleClick
-	
 	private Parent createContent() {
 
 		

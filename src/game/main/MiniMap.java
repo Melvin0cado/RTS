@@ -47,8 +47,4 @@ public class MiniMap extends Pane{
 		return rectVue;
 	}
 
-	public void setRectVue(Rectangle rectVue) {
-		this.rectVue = rectVue;
-	}
-
 }

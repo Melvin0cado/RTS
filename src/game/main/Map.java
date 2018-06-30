@@ -7,8 +7,6 @@ import javafx.scene.shape.Rectangle;
 public class Map extends Pane{
 
 	private Rectangle rect;
-	private double coorXmap;
-	private double coorYmap;
 	
 	private double clickX;
 	private double clickY;
@@ -32,30 +30,6 @@ public class Map extends Pane{
 		
 		super.getChildren().add(rect);
 				
-	}
-
-	public Rectangle getRect() {
-		return rect;
-	}
-
-	public void setRect(Rectangle rect) {
-		this.rect = rect;
-	}
-
-	public double getCoorXmap() {
-		return coorXmap;
-	}
-
-	public void setCoorXmap(double coorXmap) {
-		this.coorXmap = coorXmap;
-	}
-
-	public double getCoorYmap() {
-		return coorYmap;
-	}
-
-	public void setCoorYmap(double coorYmap) {
-		this.coorYmap = coorYmap;
 	}
 
 	public double getClickX() {

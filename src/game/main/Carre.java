@@ -7,6 +7,7 @@ import javafx.scene.shape.Rectangle;
 public class Carre extends Pane{
 
 	private Controller controller;
+	
 	private double longueur = 10.0;
 	private boolean move = false;
 	private boolean selected = false;
@@ -18,16 +19,8 @@ public class Carre extends Pane{
 	private double coeffY;
 	private double destinationX;
 	private double destinationY;
-	private double destinationXBis;
-	private double destinationYBis;
-	
 	private boolean destFini ;
-	
-	private double xCarre;
-	private double yCarre;
-	
 	private Carre carreMiniMap;
-	
 	private Rectangle rect;
 	
 	public Carre(double x, double y,Color couleur, Controller controller) {
@@ -38,7 +31,7 @@ public class Carre extends Pane{
 		super.setHeight(10);
 		this.controller = controller;
 		this.couleur = couleur;
-		this.setCouleurInit(couleur);
+		this.couleurInit =couleur;
 		rect = new Rectangle(longueur,longueur,couleur);
 		this.destFini = true;
 		
@@ -48,15 +41,10 @@ public class Carre extends Pane{
 
 	public void uptdate() {
 		
-		
 		Physics.CollisionCarreVSCarre(this, controller.getListCarre());
-		
-		if(carreMiniMap != null) {
 			
 			carreMiniMap.setTranslateX(this.getTranslateX()*controller.getCoeffMiniMap());
 			carreMiniMap.setTranslateY(this.getTranslateY()*controller.getCoeffMiniMap());
-			
-		}
 		
 		if ( (int)this.getX() >=  (int)destinationX-1 && (int)this.getX() <= (int)destinationX+1
 				&&  (int)this.getY() >=  (int)destinationY-1 && (int)this.getY()<= (int)destinationY+1) {
@@ -84,14 +72,6 @@ public class Carre extends Pane{
 		}
 	}
 	
-	public Color getCouleur() {
-		return couleur;
-	}
-
-	public void setCouleur(Color couleur) {
-		this.couleur = couleur;
-	}
-
 	public double getX() {
 		
 		return super.getTranslateX();
@@ -109,10 +89,6 @@ public class Carre extends Pane{
 
 	public void setMove(boolean move) {
 		this.move = move;
-	}
-
-	public double getSpeed() {
-		return speed;
 	}
 
 	public void setSpeed(double speed) {
@@ -182,44 +158,9 @@ public class Carre extends Pane{
 		return TRUESPEED;
 	}
 
-	public double getxCarre() {
-		return xCarre;
-	}
-
-	public void setxCarre(double xCarre) {
-		this.xCarre = xCarre;
-	}
-
-	public double getyCarre() {
-		return yCarre;
-	}
-
-	public void setyCarre(double yCarre) {
-		this.yCarre = yCarre;
-	}
-
-	public double getDestinationXBis() {
-		return destinationXBis;
-	}
-
-	public void setDestinationXBis(double destinationXBis) {
-		this.destinationXBis = destinationXBis;
-	}
-
-	public double getDestinationYBis() {
-		return destinationYBis;
-	}
-
-	public void setDestinationYBis(double destinationYBis) {
-		this.destinationYBis = destinationYBis;
-	}
 
 	public Rectangle getRect() {
 		return rect;
-	}
-
-	public void setRect(Rectangle rect) {
-		this.rect = rect;
 	}
 
 	public void setLongueur(double longueur) {
@@ -231,22 +172,8 @@ public class Carre extends Pane{
 		
 	}
 
-	public Carre getCarreMiniMap() {
-		return carreMiniMap;
-	}
-
 	public void setCarreMiniMap(Carre carreMiniMap) {
 		this.carreMiniMap = carreMiniMap;
 	}
-
-	public Color getCouleurInit() {
-		return couleurInit;
-	}
-
-	public void setCouleurInit(Color couleurInit) {
-		this.couleurInit = couleurInit;
-	}
-	
-	
 
 }
