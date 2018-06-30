@@ -85,6 +85,7 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 				}
 			}
 			
+			}
 			else if (e.isMiddleButtonDown()) {
 				
 				controller.getMap().setClickX(e.getX()-controller.getMap().getTranslateX());
@@ -92,7 +93,7 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 				
 			}
 			
-			}
+			
 		}
 	}
 
