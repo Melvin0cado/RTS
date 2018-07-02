@@ -42,11 +42,11 @@ public class Bottom extends Pane{
 	}
 
 	/**
-	 * Cette methode static permet de definir les bordure de cette objet et de voir si le click et dans cette zone.
+	 * Cette methode permet de definir les bordures de l'objet et de voir si le click et dans cette zone.
 	 * 
 	 * @param controller le controlleur.
 	 * @param e un MouseEvent.
-	 * @return une Zone sous forme boolean
+	 * @return une Zone sous forme boolean.
 	 */
 	public static boolean isClick(Controller controller, MouseEvent e) {
 		
@@ -55,6 +55,8 @@ public class Bottom extends Pane{
 				e.getY() > controller.getBot().getTranslateY() && //en haut
 				e.getY() < controller.getBot().getTranslateY()+controller.getBot().getPrefHeight() ; //en bas
 	}
+	
+	// getters/setters
 	
 	public MiniMap getMiniMap() {
 		return miniMap;

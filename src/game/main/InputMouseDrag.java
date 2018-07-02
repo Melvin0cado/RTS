@@ -22,7 +22,7 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 	@Override
 	public void handle(MouseEvent e) {
 		
-		if(e.isPrimaryButtonDown()) {
+		if(e.isPrimaryButtonDown()) { // interaction lors du click gauche
 			if(!Bottom.isClick(controller, e)) {
 				
 				controlRectSelect(controller , e);
@@ -57,14 +57,10 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 				
 			}
 		}
+		else if (e.isMiddleButtonDown()) { // interaction lors du click de la molette
 		
-		else if (e.isMiddleButtonDown()) {
-		
-			
 			mapDeplacement(controller, e);
 		}
-			
-		
 			
 	}
 	

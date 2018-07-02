@@ -4,6 +4,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * La map jeu.
+ * 
+ * @author Melvin
+ *
+ */
 public class Map extends Pane{
 
 	private Rectangle rect;
@@ -11,7 +17,13 @@ public class Map extends Pane{
 	private double clickX;
 	private double clickY;
 	
-	public Map(Pane root) {
+	/**
+	 * cree la map et le place dans le conteneur parent.
+	 * 
+	 * @param root le conteneur parent.
+	 * 
+	 */
+	public Map() {
 		super();
 		super.setTranslateX(0);
 		super.setTranslateY(0);
@@ -19,7 +31,7 @@ public class Map extends Pane{
 		super.setHeight(2000);
 		super.setPrefWidth(2000);
 		super.setPrefHeight(2000);
-		rect =new Rectangle();
+		rect = new Rectangle();
 		rect.setX(0);
 		rect.setY(0);
 		rect.setWidth(super.getPrefWidth());
@@ -30,6 +42,8 @@ public class Map extends Pane{
 		super.getChildren().add(rect);
 				
 	}
+	
+	// getters/setters
 	
 	public double getClickX() {
 		return clickX;
@@ -46,7 +60,4 @@ public class Map extends Pane{
 	public void setClickY(double clickY) {
 		this.clickY = clickY;
 	}
-	
-	
-	
 }

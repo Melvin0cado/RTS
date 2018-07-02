@@ -2,9 +2,21 @@ package game.main;
 
 import java.util.LinkedList;
 
-
+/**
+ * Cette classe contient toute la physics des elements du jeu.</br>
+ * ex : les carres avec le rectangle de selection.
+ * 
+ * @author melvi
+ *
+ */
 public class Physics {
 
+	/**
+	 * Gere l'interaction lorsqu'un carre est touche par le rectangle de selection.
+	 * 
+	 * @param controller le controlleur.
+	 * @return true si le carre est touche, false sinon.
+	 */
 	public static boolean CollisionCarreVSRect(Controller controller) {
 		boolean res = false ;
 		
@@ -24,6 +36,13 @@ public class Physics {
 		return res;
 	}
 	
+	/**
+	 * Gere l'interaction lorsque les carres se touche entre eux.
+	 * 
+	 * @param carre un premeir carre.
+	 * @param carres un deuxieme carre.
+	 * @return true si deux carre se touche, false sinon.
+	 */
 	public static boolean CollisionCarreVSCarre(Carre carre, LinkedList<Carre> carres) {
 		boolean res =false;
 		
@@ -83,6 +102,11 @@ public class Physics {
 		return res;
 	}
 	
+	/**
+	 * Recalcule la vitesse d'un carre.
+	 * 
+	 * @param carre un carre.
+	 */
 	public static void calculVitesse(Carre carre) {
 		if(carre.isMove()) {
 			carre.setSpeed(carre.getTRUESPEED()/(carre.getCoeffX()+carre.getCoeffY()));
@@ -90,50 +114,57 @@ public class Physics {
 		
 	}
 
-	public static void calculCoeff(Carre carre, double x , double y) {
+	/**
+	 * Change le coefficient du carre permettant de reguler la vitesse selon l'axe des X et celle des Y.
+	 * 
+	 * @param carre un carre.
+	 * @param destinationX la nouvelle destination en X.
+	 * @param destinationY la nouvelle destination en Y.
+	 */
+	public static void calculCoeff(Carre carre, double destinationX , double destinationY) {
 		
-		if ((x > carre.getX() && y > carre.getY())) { 
-			if (x - carre.getX() < y - carre.getY()) {
+		if ((destinationX > carre.getX() && destinationY > carre.getY())) { 
+			if (destinationX - carre.getX() < destinationY - carre.getY()) {
 				carre.setCoeffX(
-						(x - carre.getX()) / (y - carre.getY()));
+						(destinationX - carre.getX()) / (destinationY - carre.getY()));
 				carre.setCoeffY(1);
 			} else {
 				carre.setCoeffY(
-						(y - carre.getY()) / (x - carre.getX()));
+						(destinationY - carre.getY()) / (destinationX - carre.getX()));
 				carre.setCoeffX(1);
 			}
 		}
-		if (x < carre.getX() && y < carre.getY()) {
-			if (x - carre.getX() < y - carre.getY()) {
+		if (destinationX < carre.getX() && destinationY < carre.getY()) {
+			if (destinationX - carre.getX() < destinationY - carre.getY()) {
 				carre.setCoeffY(
-						(y - carre.getY()) / (x - carre.getX()));
+						(destinationY - carre.getY()) / (destinationX - carre.getX()));
 				carre.setCoeffX(1);
 			} else {
 				carre.setCoeffX(
-						(x - carre.getX()) / (y - carre.getY()));
+						(destinationX - carre.getX()) / (destinationY - carre.getY()));
 				carre.setCoeffY(1);
 			}
 		}
-		if (x > carre.getX() && y < carre.getY()) {
-			if (x - carre.getX() < carre.getY() - y) {
+		if (destinationX > carre.getX() && destinationY < carre.getY()) {
+			if (destinationX - carre.getX() < carre.getY() - destinationY) {
 				carre.setCoeffX(
-						(carre.getX() - x) / (y - carre.getY()));
+						(carre.getX() - destinationX) / (destinationY - carre.getY()));
 				carre.setCoeffY(1);
 			} else {
 				carre.setCoeffY(
-						(y - carre.getY()) / (carre.getX() - x));
+						(destinationY - carre.getY()) / (carre.getX() - destinationX));
 				carre.setCoeffX(1);
 			}
 
 		}
-		if (x < carre.getX() && y > carre.getTranslateY()) {
-			if (carre.getX() - x < y - carre.getTranslateY()) {
+		if (destinationX < carre.getX() && destinationY > carre.getTranslateY()) {
+			if (carre.getX() - destinationX < destinationY - carre.getTranslateY()) {
 				carre.setCoeffX(
-						(x - carre.getX()) / (carre.getTranslateY() - y));
+						(destinationX - carre.getX()) / (carre.getTranslateY() - destinationY));
 				carre.setCoeffY(1);
 			} else {
 				carre.setCoeffY(
-						(carre.getTranslateY() - y) / (x - carre.getX()));
+						(carre.getTranslateY() - destinationY) / (destinationX - carre.getX()));
 				carre.setCoeffX(1);
 			}
 

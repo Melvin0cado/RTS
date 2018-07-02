@@ -3,18 +3,22 @@ package game.main;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * Cette classe permet d'interagir en relachant un click de la souris.
+ * 
+ * @author Melvin
+ *
+ */
 public class InputMouseReleased implements EventHandler<MouseEvent> {
 
 	private Controller controller;
 	private RectSelect rect ;
-	
 	
 	public InputMouseReleased( Controller controller){
 		this.controller = controller; 
 		this.rect =  controller.getRect();
 		
 	}
-	
 	
 	@Override
 	public void handle(MouseEvent e) {

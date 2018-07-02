@@ -34,7 +34,7 @@ public class Controller {
 	 */
 	public Controller(Pane root) {
 		this.root = root;
-		map = new Map(root);
+		map = new Map();
 		bot = new Bottom(root);
 		coeffMiniMap = this.getBot().getMiniMap().getPrefWidth()/this.getMap().getPrefWidth();
 		new Physics();

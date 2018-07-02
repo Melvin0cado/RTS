@@ -5,13 +5,27 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-
-
+/**
+ * Cette classe permet d'ajouter un rectangle de sellection.
+ * 
+ * @author Melvin
+ *
+ */
 public class RectSelect extends Rectangle{
 
 	private double clickX;
 	private double clickY;
 	
+	/**
+	 * cree le rectangle de selection et le pose dans en dehors de la map pour l'utiliser plus tard. 
+	 * 
+	 * @param x la position en X.
+	 * @param y la position en Y.
+	 * @param width sa longueur selon X.
+	 * @param height sa longueur selon Y.
+	 * @param root son conteneur parent.
+	 * @param controller le controlleur.
+	 */
 	public RectSelect(double x, double y, double width, double height , Pane root , Controller controller) {
 		super();
 		this.setX(x);
@@ -23,6 +37,8 @@ public class RectSelect extends Rectangle{
 		
 	}
 
+	// getters/setters
+	
 	public double getClickX() {
 		return clickX;
 	}
