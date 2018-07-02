@@ -35,18 +35,20 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 		
 		
 		System.out.println(e.getX()+", "+e.getY());
-		
-		for(int i =0;i<controller.getListCarre().size();i++) {
 			
 			clickX = e.getX();
 			clickY = e.getY();
 			rect.setClickX(clickX); // on recupere les clicks de la souris
 			rect.setClickY(clickY); 
+		for(int i =0;i<controller.getListCarre().size();i++) {
 			
-			carre = controller.getListCarre().get(i);
-			coorX = e.getX() - (carre.getWidth() /2); // on donne la destination du centre du carre
-			coorY = e.getY() - (carre.getHeight()/2); 
 			
+			
+			if(!Bottom.isClick(controller, e)) {
+				carre = controller.getListCarre().get(i);
+				coorX = e.getX() - (carre.getWidth() /2); // on donne la destination du centre du carre
+				coorY = e.getY() - (carre.getHeight()/2); 
+			}
 			if(e.isSecondaryButtonDown()) {
 				
 				if (carre.isSelected()) {
