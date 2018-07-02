@@ -4,6 +4,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * cree un objet carre.
+ * 
+ * @author Melvin
+ *
+ */
 public class Carre extends Pane{
 
 	private Controller controller;
@@ -23,6 +29,14 @@ public class Carre extends Pane{
 	private Carre carreMiniMap;
 	private Rectangle rect;
 	
+	/**
+	 * Ce constructeur cree le carre dans la position donne.
+	 * 
+	 * @param x la position en x.
+	 * @param y la position en y.
+	 * @param couleur la couleur de l'objet voulu.
+	 * @param controller le controlleur.
+	 */
 	public Carre(double x, double y,Color couleur, Controller controller) {
 		super();
 		super.setTranslateX(x);
@@ -39,6 +53,9 @@ public class Carre extends Pane{
 		
 	}
 
+	/**
+	 * Cette methode contient les elements a mettre a jour a chaque tour de boucke de jeu.
+	 */
 	public void uptdate() {
 		
 		Physics.CollisionCarreVSCarre(this, controller.getListCarre());

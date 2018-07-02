@@ -3,7 +3,12 @@ package game.main;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
-
+/**
+ * cree l'interaction lors d'un glisser de la souris.
+ * 
+ * @author Melvin
+ *
+ */
 public class InputMouseDrag implements EventHandler<MouseEvent>{
 
 	private Controller controller;
@@ -28,6 +33,28 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 				
 				controller.getMap().setTranslateX((-e.getX()+controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getRectVue().getWidth()/2)/controller.getCoeffMiniMap() );
 				controller.getMap().setTranslateY((-e.getY()+controller.getBot().getTranslateY()+controller.getBot().getMiniMap().getRectVue().getHeight()/2)/controller.getCoeffMiniMap());
+				
+				if((e.getX() < (controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getRectVue().getWidth()/2)) ) {
+					
+					controller.getBot().getMiniMap().getRectVue().setX(0);
+					controller.getMap().setTranslateX(50);
+				}
+				if(e.getX() > (controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getWidth()-controller.getBot().getMiniMap().getRectVue().getWidth()/2)) {
+					
+					controller.getBot().getMiniMap().getRectVue().setX(controller.getBot().getMiniMap().getWidth()-controller.getBot().getMiniMap().getRectVue().getWidth());
+					controller.getMap().setTranslateX(-controller.getMap().getWidth()+controller.getRoot().getWidth()-50);
+				}
+				if(e.getY() < (controller.getBot().getTranslateY()+controller.getBot().getMiniMap().getRectVue().getHeight()/2)) {
+					
+					controller.getBot().getMiniMap().getRectVue().setY(0);
+					controller.getMap().setTranslateY(50);
+				}
+				if(e.getY() > (controller.getBot().getTranslateY()+controller.getBot().getMiniMap().getHeight()-controller.getBot().getMiniMap().getRectVue().getHeight()/2)){
+					
+					controller.getBot().getMiniMap().getRectVue().setY(controller.getBot().getMiniMap().getHeight()-controller.getBot().getMiniMap().getRectVue().getHeight());
+					controller.getMap().setTranslateY(-controller.getMap().getHeight()+controller.getRoot().getHeight()-controller.getBot().getPrefHeight()-50);
+				}
+				
 			}
 		}
 		
@@ -41,6 +68,12 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 			
 	}
 	
+	/**
+	 * Controle le deplacement de la map en fonction du placement de la souris et du click de depart.
+	 * 
+	 * @param controller le controlleur.
+	 * @param e un MouseEvent.
+	 */
 	public static void mapDeplacement(Controller controller, MouseEvent e) {
 		
 		if(e.getX()-controller.getMap().getClickX() < 50 &&
@@ -53,9 +86,14 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 			
 			controller.getMap().setTranslateY(e.getY()-controller.getMap().getClickY());
 		}
-				
 	}
 	
+	/**
+	 * gere le controle du rectangle de selection.
+	 * 
+	 * @param controller le controlleur.
+	 * @param e un MouseEvent.
+	 */
 	public static void controlRectSelect(Controller controller , MouseEvent e) {
 		
 		RectSelect rect = controller.getRect();
@@ -81,5 +119,4 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 			rect.setWidth(rect.getClickX()-e.getX());
 		}
 	}
-
 }

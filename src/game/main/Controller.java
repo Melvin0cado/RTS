@@ -6,6 +6,14 @@ import java.util.LinkedList;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+/**
+ * Le controlleur du jeu.
+ * 
+ * Il permet de reunir tout les elements du jeu pour les faires interagir entre eux. 
+ * 
+ * @author Melvin
+ *
+ */
 public class Controller {
 
 	private LinkedList<Carre> ListCarre = new LinkedList<Carre>();
@@ -19,6 +27,11 @@ public class Controller {
 	
 	private double coeffMiniMap;
 	
+	/**
+	 * cree un conteneur contenant tout les elements du jeu.
+	 * 
+	 * @param root
+	 */
 	public Controller(Pane root) {
 		this.root = root;
 		map = new Map(root);
@@ -31,16 +44,21 @@ public class Controller {
 		
 	}
 	
-	public LinkedList<Carre> getListCarre(){
-		return this.ListCarre;
-	}
-	
+	/**
+	 * cette methode ajoute le carre donnee dans la map et la minimap.
+	 * 
+	 * @param carre
+	 */
 	public void addCarre(Carre carre) {
 		
 		ListCarre.add(carre);
 		ListCarreMini.add(carre);
 	}
 		
+	/**
+	 * Cette methode regroupe tout les methodes update de tout les elements du jeu ainsi que certains elements a mettre a jour.
+	 * 
+	 */
 	public void uptdate() {
 		
 		Carre carre;
@@ -55,17 +73,17 @@ public class Controller {
 				this.getMap().getTranslateX()+this.getMap().getPrefWidth() > this.getRoot().getPrefWidth()+10 ) {
 			this.getBot().getMiniMap().getRectVue().setX(-this.getMap().getTranslateX()*coeffMiniMap);
 		}
-		
 		if(this.getMap().getTranslateY() < this.getRoot().getTranslateY()-10 &&
 				this.getMap().getTranslateY()+this.getMap().getPrefHeight()+this.getBot().getPrefHeight() > this.getRoot().getPrefHeight()+10 ) {
 			this.getBot().getMiniMap().getRectVue().setY(-this.getMap().getTranslateY()*coeffMiniMap);
 		}
-		
-		
 	}
 	
-	
-	
+	/**
+	 * Cette methode cree le rendu visuel du carre dans la map et dans la minimap.
+	 * 
+	 * @param root la map.
+	 */
 	public void render(Pane root) {
 				
 		Carre carre;
@@ -82,40 +100,33 @@ public class Controller {
 			carre.setCarreMiniMap(carre2);
 			
 			root.getChildren().add(carre);
-			
 			this.getBot().getMiniMap().getChildren().add(carre2);
 		}
-		
-		
 	}
+	
+	// getters/setters
 	
 	public Pane getRoot() {
 		return root;
 	}
-
 	public RectSelect getRect() {
 		return rect;
 	}
-
+	public LinkedList<Carre> getListCarre(){
+		return this.ListCarre;
+	}
 	public LinkedList<Carre> getListCarreSelected() {
 		return ListCarreSelected;
 	}
-
-
 	public Map getMap() {
 		return map;
 	}
-
-
 	public Bottom getBot() {
 		return bot;
 	}
-
-
 	public LinkedList<Carre> getListCarreMini() {
 		return ListCarreMini;
 	}
-
 	public double getCoeffMiniMap() {
 		return coeffMiniMap;
 	}

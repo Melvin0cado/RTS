@@ -3,6 +3,12 @@ package game.main;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * cree l'interaction lors d'un click sur un elements du jeu.
+ * 
+ * @author Melvin
+ *
+ */
 public class InputMouseClick implements EventHandler<MouseEvent> {
 
 	private Controller controller;
@@ -22,6 +28,9 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 		
 	}
 
+	/**
+	 * Gere l'intercation lors du click.
+	 */
 	public void handle(MouseEvent e) {
 		
 		
@@ -50,7 +59,6 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 					
 				}
 			}
-			
 			else if(e.isPrimaryButtonDown()){
 				
 				if(!Bottom.isClick(controller, e)) {
@@ -62,21 +70,42 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 				
 				if(MiniMap.isClick(controller, e)) {
 					
+					System.out.println(e.getX()+ " ; "+(controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getRectVue().getWidth()/2));
+				
 					controller.getMap().setTranslateX((-e.getX()+controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getRectVue().getWidth()/2)/controller.getCoeffMiniMap()  );
 					controller.getMap().setTranslateY((-e.getY()+controller.getBot().getTranslateY()+controller.getBot().getMiniMap().getRectVue().getHeight()/2)/controller.getCoeffMiniMap());
+					
+					if((e.getX() < (controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getRectVue().getWidth()/2)-5) ) {
+						
+						controller.getBot().getMiniMap().getRectVue().setX(0);
+						controller.getMap().setTranslateX(50);
+					}
+					if(e.getX() > (controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getWidth()-controller.getBot().getMiniMap().getRectVue().getWidth()/2)+5) {
+						
+						controller.getBot().getMiniMap().getRectVue().setX(controller.getBot().getMiniMap().getWidth()-controller.getBot().getMiniMap().getRectVue().getWidth());
+						controller.getMap().setTranslateX(-controller.getMap().getWidth()+controller.getRoot().getWidth()-50);
+					}
+					if(e.getY() < (controller.getBot().getTranslateY()+controller.getBot().getMiniMap().getRectVue().getHeight()/2)) {
+						
+						controller.getBot().getMiniMap().getRectVue().setY(0);
+						controller.getMap().setTranslateY(50);
+					}
+					if(e.getY() > (controller.getBot().getTranslateY()+controller.getBot().getMiniMap().getHeight()-controller.getBot().getMiniMap().getRectVue().getHeight()/2)){
+						
+						controller.getBot().getMiniMap().getRectVue().setY(controller.getBot().getMiniMap().getHeight()-controller.getBot().getMiniMap().getRectVue().getHeight());
+						controller.getMap().setTranslateY(-controller.getMap().getHeight()+controller.getRoot().getHeight()-controller.getBot().getPrefHeight()-50);
+					}
+						
 				}
-				
 				if(!(e.getX() < carre.getX() + carre.getWidth()
 					&& e.getX() > carre.getX()
 					&& e.getY() < carre.getY() + carre.getHeight()
-					&& e.getY() > carre.getY())) {
+					&& e.getY() > carre.getY()) ) {
 				
 					carre.setSelected(false);
 				
 				}
 			}
-			
-			
 			else if (e.isMiddleButtonDown()) {
 				
 				controller.getMap().setClickX(e.getX()-controller.getMap().getTranslateX());

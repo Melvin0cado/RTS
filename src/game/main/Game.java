@@ -11,6 +11,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/**
+ * Cette classe permet de creer la fenetre principale et de lancer le jeu.
+ * 
+ * @author Melvin
+ *
+ */
 public class Game extends Application {
 	// private ImageCursor cursor= new ImageCursor(new Image("./cursor.png"));
 	
@@ -20,6 +26,12 @@ public class Game extends Application {
 	private double widthEcran = dimensionEcran.getWidth();
 	private double heightEcran = dimensionEcran.getHeight();
 	
+	/**
+	 * Cette methode cree la fenetre  en fonction de l'ecran.</br>
+	 * Elle contient la boucle de jeu.
+	 * 
+	 * @return un conteneur Parent.
+	 */
 	private Parent createContent() {
 
 		
@@ -62,13 +74,20 @@ public class Game extends Application {
 
 		return root;
 	}
-
+	
+	/**
+	 * Cette methode contient l'update du controlleur pricipale.
+	 * 
+	 */
 	private void onUpdate() {
 
 		controller.uptdate();
 		
 	}
 
+	/**
+	 * Cette methode permet de creer la scene et de lui attribuer quelque caracteristique.
+	 */
 	@Override
 	public void start(Stage stage) throws Exception {
 
@@ -81,6 +100,11 @@ public class Game extends Application {
 
 	}
 
+	/**
+	 * Cette methode lance l'application. 
+	 * 
+	 * @param args 
+	 */
 	public static void main(String[] args) {
 
 		Application.launch(args);
