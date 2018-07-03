@@ -41,7 +41,6 @@ public class Game extends Application {
 		root = new Pane();
 		root.setPrefSize(fenetreWidth, fenetreHeight);
 		
-		
 		controller = new Controller(root);
 		controller.addCarre(new Carre(200,200,Color.BLUE, controller));
 		controller.addCarre(new Carre(400,200,Color.BLUE, controller));
@@ -50,7 +49,6 @@ public class Game extends Application {
 		controller.addCarre(new Carre(430,230,Color.BLUE, controller));
 		controller.addCarre(new Carre(270,370,Color.BLUE, controller));
 		
-	
 		root.getChildren().add(controller.getMap());
 		root.getChildren().add(controller.getBot());
 		root.getChildren().add(controller.getRect());
