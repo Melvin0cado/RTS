@@ -30,7 +30,7 @@ public class Game extends Application {
 	 * Cette methode cree la fenetre  en fonction de l'ecran.</br>
 	 * Elle contient la boucle de jeu.
 	 * 
-	 * @return un conteneur Parent.
+	 * @return un conteneur. (Parent)
 	 */
 	private Parent createContent() {
 
@@ -99,7 +99,7 @@ public class Game extends Application {
 	}
 
 	/**
-	 * Cette methode lance l'application. 
+	 * La methode principale lance l'application. 
 	 * 
 	 * @param args 
 	 */
@@ -107,5 +107,4 @@ public class Game extends Application {
 
 		Application.launch(args);
 	}
-
 }
