@@ -16,7 +16,7 @@ public class Map extends Pane{
 	
 	private double clickX;
 	private double clickY;
-	
+	private final double tailleMap = 2000;
 	/**
 	 * cree la map et le place dans le conteneur parent.
 	 * 
@@ -27,10 +27,10 @@ public class Map extends Pane{
 		super();
 		super.setTranslateX(0);
 		super.setTranslateY(0);
-		super.setWidth(2000);
-		super.setHeight(2000);
-		super.setPrefWidth(2000);
-		super.setPrefHeight(2000);
+		super.setWidth(tailleMap);
+		super.setHeight(tailleMap);
+		super.setPrefWidth(tailleMap);
+		super.setPrefHeight(tailleMap);
 		rect = new Rectangle();
 		rect.setX(0);
 		rect.setY(0);

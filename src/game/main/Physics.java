@@ -6,7 +6,7 @@ import java.util.LinkedList;
  * Cette classe contient toute la physics des elements du jeu.</br>
  * ex : les carres avec le rectangle de selection.
  * 
- * @author melvi
+ * @author Melvin
  *
  */
 public class Physics {

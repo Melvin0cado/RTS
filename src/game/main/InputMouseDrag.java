@@ -23,13 +23,14 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 	public void handle(MouseEvent e) {
 		
 		if(e.isPrimaryButtonDown()) { // interaction lors du click gauche
-			if(!Bottom.isClick(controller, e)) {
+			if(controller.getEtat() == Etat.MAP) {
+			
 				
 				controlRectSelect(controller , e);
 			}
 			
 			
-			if(MiniMap.isClick(controller, e)) {
+			if(MiniMap.isClick(controller, e) && controller.getEtat() == Etat.MINIMAP) {
 				
 				controller.getMap().setTranslateX((-e.getX()+controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getRectVue().getWidth()/2)/controller.getCoeffMiniMap() );
 				controller.getMap().setTranslateY((-e.getY()+controller.getBot().getTranslateY()+controller.getBot().getMiniMap().getRectVue().getHeight()/2)/controller.getCoeffMiniMap());

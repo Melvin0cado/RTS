@@ -24,6 +24,7 @@ public class Controller {
 	private RectSelect rect = new RectSelect(0, 0, 0, 0, root,this);
 	private Map map;
 	private Bottom bot;
+	private Etat etat = null;
 	
 	private double coeffMiniMap;
 	
@@ -129,6 +130,14 @@ public class Controller {
 	}
 	public double getCoeffMiniMap() {
 		return coeffMiniMap;
+	}
+
+	public Etat getEtat() {
+		return etat;
+	}
+
+	public void setEtat(Etat etat) {
+		this.etat = etat;
 	}
 
 }

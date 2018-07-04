@@ -15,12 +15,12 @@ public class Carre extends Pane{
 	private Controller controller;
 	
 	private double longueur = 10.0;
-	private boolean move = false;
-	private boolean selected = false;
+	private boolean move;
+	private boolean selected;
 	private Color couleurInit;
 	private Color couleur;
 	private final double TRUESPEED = 2;
-	private double speed =2;
+	private double speed;
 	private double coeffX;
 	private double coeffY;
 	private double destinationX;
@@ -48,7 +48,9 @@ public class Carre extends Pane{
 		this.couleurInit =couleur;
 		rect = new Rectangle(longueur,longueur,couleur);
 		this.destFini = true;
-		
+		this.selected = false;
+		this.move = false;
+		this.speed =2 ;
 		this.getChildren().add(rect);
 		
 	}
@@ -95,7 +97,6 @@ public class Carre extends Pane{
 		
 		return super.getTranslateX();
 	}
-	
 	public double getY() {
 		
 		return super.getTranslateY();
@@ -168,6 +169,10 @@ public class Carre extends Pane{
 		
 	}
 	public void setCarreMiniMap(Carre carreMiniMap) {
+
 		this.carreMiniMap = carreMiniMap;
+	}
+	public boolean getSelected() {
+		return selected;
 	}
 }

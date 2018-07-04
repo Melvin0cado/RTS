@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
- * L'IHM contenant la minimap et des boutons d'interaction changeant en fonction de l'objet selectionnee.
+ * C'est l'IHM contenant la minimap et des boutons d'interaction changeant en fonction de l'objet selectionnee.
  * 
  * @author Melvin
  *
