@@ -22,7 +22,7 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 	private Carre carre;
 	private RectSelect rect ;
 
-	public InputMouseClick( Controller controller) {
+	public InputMouseClick( Controller controller){
 		this.controller = controller; 
 		this.rect =  controller.getRect();
 	}
