@@ -20,12 +20,11 @@ public class Physics {
 	public static boolean CollisionCarreVSRect(Controller controller) {
 		boolean res = false ;
 		
+		Carre carre;
 		for(int i=0;i<controller.getListCarre().size();i++) {
 			
-			if(controller.getRect().intersects(controller.getListCarre().get(i).getX()+controller.getMap().getTranslateX(),
-					controller.getListCarre().get(i).getY()+controller.getMap().getTranslateY(),
-					controller.getListCarre().get(i).getBoundsInLocal().getWidth(),
-					controller.getListCarre().get(i).getBoundsInLocal().getHeight())) {
+			carre = controller.getListCarre().get(i);
+			if(controller.getRect().intersects(carre.getBoundsInParent())) {
 				
 				controller.getListCarre().get(i).setSelected(true);
 				controller.getListCarreSelected().add(controller.getListCarre().get(i));
@@ -34,6 +33,33 @@ public class Physics {
 			
 		}
 		return res;
+	}
+	
+	/**
+	 * 
+	 * @param carre
+	 * @param carres
+	 * @return
+	 */
+	public static boolean ZoneAttackCarre(Carre carre, LinkedList<Carre> carres) {
+		boolean res = false;
+		
+		Carre carre2;
+		
+		for(int i=0;i<carres.size();i++) {
+			
+			carre2= carres.get(i);
+			if(carre != carre2) {
+				
+				if(carre.getBoundsInParent().intersects(carre2.getBoundsInParent())){
+					carre.Attack(carre2);
+					res = true;
+				}
+			}
+			
+		}
+		return res;
+			
 	}
 	
 	/**

@@ -25,7 +25,6 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 		if(e.isPrimaryButtonDown()) { // interaction lors du click gauche
 			if(controller.getEtat() == Etat.MAP) {
 			
-				
 				controlRectSelect(controller , e);
 			}
 			
@@ -64,6 +63,8 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 		}
 			
 	}
+	
+	
 	
 	/**
 	 * Controle le deplacement de la map en fonction du placement de la souris et du click de depart.
