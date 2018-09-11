@@ -24,7 +24,11 @@ public class Physics {
 		for(int i=0;i<controller.getListCarre().size();i++) {
 			
 			carre = controller.getListCarre().get(i);
-			if(controller.getRect().intersects(carre.getBoundsInParent())) {
+			
+			if(controller.getRect().intersects(carre.getX(),
+					carre.getY(),
+					carre.getLongueur(),
+					carre.getLongueur() ) ) {
 				
 				controller.getListCarre().get(i).setSelected(true);
 				controller.getListCarreSelected().add(controller.getListCarre().get(i));
@@ -52,14 +56,28 @@ public class Physics {
 			if(carre != carre2) {
 				
 				if(carre.getBoundsInParent().intersects(carre2.getBoundsInParent())){
-					carre.Attack(carre2);
+				
+					if(carre.getTimepast() == -1 ){
+						
+						carre.setTimepast(carre.getTimeNow());
+					}
+					carre.setTimeReel(carre.getTimeNow()-carre.getTimepast());
+					System.out.println(carre.getTimeReel());
+					
+					if(carre.getTimeReel() >= 3){
+						
+						carre.Attack(carre);
+						carre.setTimepast(carre.getTimeNow());
+					}
 					res = true;
+					
+				}else {
+					
+					carre.setTimepast(carre.getTimeNow());
 				}
 			}
-			
 		}
 		return res;
-			
 	}
 	
 	/**
@@ -85,21 +103,17 @@ public class Physics {
 					
 					if( carre.getX() < carre2.getX() ) {
 						
-						
 						carre.setDestinationX(carre.getX()-carre.getLongueur()/1.5);
 						carre.setDestinationY(carre.getY());
 						
-							
 					}if(carre.getY() < carre2.getY() ) {
 						
-					
 						carre.setDestinationX(carre.getX());
 						carre.setDestinationY(carre.getY()-carre.getLongueur()/1.5);
 						
 					}
 					if(carre.getX() > carre2.getX() ) {
 					
-						
 						carre.setDestinationX(carre.getX()+carre.getLongueur()/1.5);
 						carre.setDestinationY(carre.getY());
 						
@@ -107,15 +121,12 @@ public class Physics {
 					
 					if(carre.getY() > carre2.getY() ) {
 						
-					
 						carre.setDestinationX(carre.getX());
 						carre.setDestinationY(carre.getY()+carre.getLongueur()/1.5);
 						
 					}
 					Physics.calculCoeff(carre, carre.getDestinationX(), carre.getDestinationY());
-					Physics.calculCoeff(carre2, carre2.getDestinationX(), carre2.getDestinationY());
 					Physics.calculVitesse(carre);
-					Physics.calculVitesse(carre2);
 					
 					carre.setMove(true);
 					carre2.setMove(true);

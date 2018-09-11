@@ -6,9 +6,11 @@ import java.awt.Toolkit;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.Pane;
@@ -23,7 +25,7 @@ import javafx.stage.Stage;
  *
  */
 public class Game extends Application {
-	// private ImageCursor cursor= new ImageCursor(new Image("./cursor.png"));
+	private ImageCursor cursor= new ImageCursor(new Image("./cursor.png"));
 	
 	private Pane root;
 	private Controller controller ;
@@ -41,7 +43,8 @@ public class Game extends Application {
 
 		double fenetreWidth = widthEcran*0.51471;
 		double fenetreHeight =  heightEcran*0.908;
-				
+			
+		
 		root = new Pane();
 		root.setPrefSize(fenetreWidth, fenetreHeight);
 		
@@ -56,7 +59,7 @@ public class Game extends Application {
 		root.getChildren().add(controller.getBot());
 		root.getChildren().add(controller.getRect());
 		
-		//root.setCursor(cursor);
+		root.setCursor(cursor);
 		
 		root.setOnMousePressed(new InputMouseClick(controller));
 		root.setOnMouseDragged(new InputMouseDrag (controller));

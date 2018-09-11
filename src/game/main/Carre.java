@@ -1,5 +1,7 @@
 package game.main;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -26,6 +28,8 @@ public class Carre extends Pane{
 	private double destinationX;
 	private double destinationY;
 	private boolean destFini;
+	private ImageView combattant;
+	
 	private Rectangle carreMiniMap;
 	private Rectangle rect;
 	
@@ -33,9 +37,10 @@ public class Carre extends Pane{
 	
 	private final double TRUESPEED = 2;
 	private double pv;
-	private Rectangle zoneAttack;
-	
-	private final Duration duree = Duration.millis(3000); // Une durée en millisecondes. 
+
+	private long timepast = -1;
+	private long timeNow;
+	private long timeReel;
 	
 	/**
 	 * Ce constructeur cree le carre dans la position donne.
@@ -52,9 +57,11 @@ public class Carre extends Pane{
 		super.setWidth(this.getLongueur());
 		super.setHeight(this.getLongueur());
 		
+		this.combattant = new ImageView("./combattant1.png");
+		
 		this.controller = controller;
 		this.couleur = couleur;
-		this.couleurInit = couleur;
+		this.setCouleurInit(couleur);
 		rect = new Rectangle(longueur,longueur,couleur);
 		this.destFini = true;
 		this.selected = false;
@@ -62,31 +69,27 @@ public class Carre extends Pane{
 		this.speed =2 ;
 		
 		this.pv = 100;
-		this.zoneAttack = new Rectangle();
-		this.zoneAttack.setTranslateX(-2);
-		this.zoneAttack.setTranslateY(-2);
-		this.zoneAttack.setWidth(this.getWidth()+ 4);
-		this.zoneAttack.setHeight(this.getHeight()+4);
-		this.zoneAttack.setFill(Color.TRANSPARENT);
-		this.zoneAttack.setStroke(Color.WHITE);
 		
-		this.getChildren().add(zoneAttack);
-		this.getChildren().add(rect);
-		
+	//	this.getChildren().add(rect);
+		this.getChildren().add(combattant);
 	}
-
+	
 	/**
 	 * Cette methode contient les elements a mettre a jour a chaque tour de boucle de jeu.
 	 */
 	public void uptdate() {
 		
+		System.out.println(this.getCouleurInit()+" ; "+this.getPv());
+
+		
+		this.timeNow = controller.getTimeNow();
+		
 		if(this.getPv() <=0 ) {
 			
 			this.controller.getListCarre().remove(this);
-			
 		}
-		Physics.ZoneAttackCarre(this, controller.getListCarre());
-		Physics.CollisionCarreVSCarre(this, controller.getListCarre()); // ça bug cherche pourquoi !!
+		System.out.println(Physics.ZoneAttackCarre(this, controller.getListCarre()));
+		Physics.CollisionCarreVSCarre(this, controller.getListCarre());
 		
 		carreMiniMap.setTranslateX(this.getTranslateX()*controller.getCoeffMiniMap());
 		carreMiniMap.setTranslateY(this.getTranslateY()*controller.getCoeffMiniMap());
@@ -117,7 +120,8 @@ public class Carre extends Pane{
 	
 	public void Attack(Carre carre) {
 		
-		carre.setPv(carre.getPv()-100);
+		carre.setPv(carre.getPv()-10);
+		
 		
 	}
 	
@@ -126,9 +130,6 @@ public class Carre extends Pane{
 	public double getX() {
 		
 		return super.getTranslateX();
-	}
-	public Rectangle getZoneAttack() {
-		return zoneAttack;
 	}
 	public double getY() {
 		
@@ -217,5 +218,37 @@ public class Carre extends Pane{
 	public void setPv(double pv) {
 
 		this.pv = pv;
+	}
+
+	public long getTimepast() {
+		return timepast;
+	}
+
+	public void setTimepast(long timepast) {
+		this.timepast = timepast;
+	}
+
+	public long getTimeNow() {
+		return timeNow;
+	}
+
+	public void setTimeNow(long timeNow) {
+		this.timeNow = timeNow;
+	}
+
+	public long getTimeReel() {
+		return timeReel;
+	}
+
+	public void setTimeReel(long timeReel) {
+		this.timeReel = timeReel;
+	}
+
+	public Color getCouleurInit() {
+		return couleurInit;
+	}
+
+	public void setCouleurInit(Color couleurInit) {
+		this.couleurInit = couleurInit;
 	}
 }

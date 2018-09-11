@@ -1,6 +1,7 @@
 package game.main;
 
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -23,7 +24,11 @@ public class InputMouseReleased implements EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent e) {
 		
-		Physics.CollisionCarreVSRect(controller);
+		
+		if(e.getButton() == MouseButton.PRIMARY) {
+			Physics.CollisionCarreVSRect(controller);
+			
+		}
 		rect.setX(0);
 		rect.setY(0);
 		rect.setWidth(0);

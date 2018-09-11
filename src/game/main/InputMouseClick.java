@@ -33,7 +33,7 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 	public void handle(MouseEvent e) {
 	
 		System.out.println(e.getX()+", "+e.getY());
-		System.out.println(controller.getRect().getX());	
+		
 		
 			clickX = e.getX();
 			clickY = e.getY();
@@ -47,6 +47,7 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 				for(int i =0;i<controller.getListCarre().size();i++) {
 					
 					carre = controller.getListCarre().get(i);
+					
 					coorX = e.getX() - (carre.getWidth() /2); // on donne la destination par le centre du carre.
 					coorY = e.getY() - (carre.getHeight()/2);
 					
@@ -88,6 +89,23 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 			}
 			else if(e.isPrimaryButtonDown()){
 				
+				for(int i =0;i<controller.getListCarre().size();i++) {
+					
+					carre = controller.getListCarre().get(i);
+					
+					if(!(e.getX() < carre.getRect().getX() + carre.getRect().getWidth()
+					
+					&& e.getX() > carre.getRect().getX()
+					&& e.getY() < carre.getRect().getY() + carre.getRect().getHeight()
+					&& e.getY() > carre.getRect().getY()) 
+					&& !Bottom.isClick(controller, e)){ // deselectionne le carre s'il n'est pas cliquer sauf si on click sur le l'IHM du Bottom.
+				
+					carre.setSelected(false);
+					
+					}
+					
+				}
+				
 				if(!Bottom.isClick(controller, e)) {
 					controller.setEtat(Etat.MAP);
 					rect.setWidth(1);
@@ -124,22 +142,6 @@ public class InputMouseClick implements EventHandler<MouseEvent> {
 						controller.getBot().getMiniMap().getRectVue().setY(controller.getBot().getMiniMap().getHeight()-controller.getBot().getMiniMap().getRectVue().getHeight());
 						controller.getMap().setTranslateY(-controller.getMap().getHeight()+controller.getRoot().getHeight()-controller.getBot().getPrefHeight()-50);
 					}
-				}
-				for(int i =0;i<controller.getListCarre().size();i++) {
-					
-					carre = controller.getListCarre().get(i);
-					
-					if(!(e.getX() < carre.getX() + carre.getWidth()
-					
-					&& e.getX() > carre.getX()
-					&& e.getY() < carre.getY() + carre.getHeight()
-					&& e.getY() > carre.getY()) 
-					&& !Bottom.isClick(controller, e)){ // deselectionne le carre s'il n'est pas cliquer sauf si on click sur le l'IHM du Bottom.
-				
-					carre.setSelected(false);
-					
-					}
-					
 				}
 				
 			}

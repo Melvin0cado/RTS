@@ -32,6 +32,7 @@ public class Controller {
 	
 	private long timepast = -1;
 	private long timeNow;
+	private long timeReel;
 	
 	/**
 	 * cree un conteneur contenant tout les elements du jeu.
@@ -75,28 +76,40 @@ public class Controller {
 	
 	public void removeCarre(Carre carre) {
 		
+		
 		carre.setSelected(false);
 		carre.setMove(false);
 		
+		this.getListCarreMini().remove(carre.getCarreMiniMap());
+		this.getListCarre().remove(carre);
 		this.getMap().getChildren().remove(carre);
 		this.getBot().getMiniMap().getChildren().remove(carre.getCarreMiniMap());
-		System.out.println(this.getMap().getChildren().toString());
+		
 		this.etat = Etat.MINIMAP;
 		this.etat = Etat.MAP;
+		
 	}
 		
 	/**
-	 * Cette methode regroupe tout les methodes update de tout les elements du jeu ainsi que certains elements a mettre a jour.
+	 * Cette methode regroupe toutes les methodes update de chaque elements du jeu.
 	 * 
 	 */
 	public void uptdate() {
+		
 		
 		timeNow = System.currentTimeMillis()/1000; //convertion du temps en seconde.
 		if(timepast == -1) {
 			timepast = timeNow;
 			
 		}
-		System.out.println(timeNow-timepast); // gestion du temps.
+		timeReel = timeNow-timepast ;
+		//System.out.println(timeReel); // gestion du temps.
+	
+//		if(timeReel == 5) { // envoyer un message toute les 5 secondes.
+//			System.out.println("CoucouTimer");
+//			timepast = timeNow;
+//			
+//		}
 		
 		Carre carre;
 		

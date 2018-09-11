@@ -27,8 +27,6 @@ public class InputMouseDrag implements EventHandler<MouseEvent>{
 			
 				controlRectSelect(controller , e);
 			}
-			
-			
 			if(MiniMap.isClick(controller, e) && controller.getEtat() == Etat.MINIMAP) {
 				
 				controller.getMap().setTranslateX((-e.getX()+controller.getBot().getMiniMap().getTranslateX()+controller.getBot().getMiniMap().getRectVue().getWidth()/2)/controller.getCoeffMiniMap() );
